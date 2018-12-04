@@ -1,0 +1,2 @@
+class ConsumerDebt < ApplicationRecord
+end
