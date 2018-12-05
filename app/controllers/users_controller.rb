@@ -4,4 +4,7 @@ class UsersController < ApplicationController
 
   end
 
+  def initial_questions
+
+  end
 end
