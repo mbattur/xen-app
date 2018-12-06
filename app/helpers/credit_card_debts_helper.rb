@@ -1,0 +1,2 @@
+module CreditCardDebtsHelper
+end

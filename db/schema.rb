@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_04_122132) do
+ActiveRecord::Schema.define(version: 2018_12_06_122422) do
 
   create_table "consumer_debts", force: :cascade do |t|
+    t.string "name"
+    t.decimal "balance"
+    t.decimal "monthly_minimum"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "credit_card_debts", force: :cascade do |t|
     t.string "name"
     t.decimal "balance"
     t.decimal "monthly_minimum"
