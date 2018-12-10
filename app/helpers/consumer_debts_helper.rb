@@ -1,0 +1,2 @@
+module ConsumerDebtsHelper
+end

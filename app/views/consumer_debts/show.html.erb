@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @consumer_debt.name %>
+</p>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @consumer_debt.balance %>
+</p>
+
+<p>
+  <strong>Monthly minimum:</strong>
+  <%= @consumer_debt.monthly_minimum %>
+</p>
+
+<%= link_to 'Edit', edit_consumer_debt_path(@consumer_debt) %> |
+<%= link_to 'Back', consumer_debts_path %>

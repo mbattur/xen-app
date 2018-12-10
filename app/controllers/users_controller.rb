@@ -7,4 +7,8 @@ class UsersController < ApplicationController
   def initial_questions
 
   end
+
+  def levels
+
+  end
 end
