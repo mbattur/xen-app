@@ -1,0 +1,17 @@
+<h1>Listing questions</h1>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th></th>
+  </tr>
+ 
+  <% @questions.each do |question| %>
+    <tr>
+      <td><%= question.first_name %></td>
+      <td><%= question.last_name %></td>
+      <td><%= link_to 'Show', question_path(question) %></td>
+    </tr>
+  <% end %>
+</table>

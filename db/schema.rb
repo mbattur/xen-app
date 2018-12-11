@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_122422) do
+ActiveRecord::Schema.define(version: 2018_12_11_144218) do
 
   create_table "consumer_debts", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,32 @@ ActiveRecord::Schema.define(version: 2018_12_06_122422) do
     t.string "name"
     t.decimal "balance"
     t.decimal "monthly_minimum"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.integer "phone"
+    t.string "address1"
+    t.string "address2"
+    t.string "city"
+    t.string "state"
+    t.integer "zip"
+    t.string "occupation"
+    t.date "birthday"
+    t.integer "annual_income"
+    t.integer "paycheck"
+    t.integer "paycheck_occurance"
+    t.integer "card_debt"
+    t.integer "consumer_debt"
+    t.integer "mortgage_balance"
+    t.integer "retirment_contribution"
+    t.integer "college_contribution"
+    t.integer "cash_savings"
+    t.string "wanna_win"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
