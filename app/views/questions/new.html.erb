@@ -70,8 +70,38 @@
             <%= form.text_field :paycheck, class: 'form-control', placeholder: 'Household paycheck?' %>
           </div>
           <div class="form-group col-md-6">
-            <%= form.label "How ofter do you receive the paycheck?" %><br>
+            <%= form.label "How often do you receive the paycheck?" %><br>
             <%= form.text_field :paycheck_occurance, class: 'form-control', placeholder: "Every two week, Twice a month, or other" %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label "What's your total credit card debt?" %><br>
+            <%= form.text_field :card_debt, class: 'form-control', placeholder: 'Total credit card debt?' %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label "What's your total consumer debt?" %><br>
+            <%= form.text_field :consumer_debt, class: 'form-control', placeholder: "Medical or tax debts, car or student loans, etc.," %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label "What's your total mortgage balance?" %><br>
+            <%= form.text_field :mortgage_balance, class: 'form-control', placeholder: 'Total mortgage balance' %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label "How much do you contribute to retirment?" %><br>
+            <%= form.text_field :retirment_contribution, class: 'form-control', placeholder: "401k, Ira, or others" %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label "How much do you contribute to college savings?" %><br>
+            <%= form.text_field :college_contribution, class: 'form-control', placeholder: '529, ESA, and others' %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label "How much cash do you have?" %><br>
+            <%= form.text_field :cash_savings, class: 'form-control', placeholder: "Liquid cash on hand" %>
           </div>
         </div>
         <div class="form-group">

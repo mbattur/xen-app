@@ -23,7 +23,6 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
       t.integer :cash_savings
       t.string :wanna_win
 
-
       t.timestamps
     end
   end
