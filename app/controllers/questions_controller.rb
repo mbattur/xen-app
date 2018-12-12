@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
         :city, :state, :zip, :occupation, :birthday, :annual_income, 
         :paycheck, :paycheck_occurance, :card_debt, :consumer_debt, 
         :mortgage_balance, :retirment_contribution, :college_contribution, 
-        :cash_savings, :wanna_win
+        :cash_savings
       )
     end
 end

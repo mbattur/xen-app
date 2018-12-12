@@ -21,7 +21,6 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
       t.integer :retirment_contribution
       t.integer :college_contribution
       t.integer :cash_savings
-      t.string :wanna_win
 
       t.timestamps
     end
