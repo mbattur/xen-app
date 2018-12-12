@@ -1,17 +1,93 @@
 <h3>Questions</h3>
 
 <%= form_with scope: :question, url: questions_path, local: true do |form| %>
-  <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </p>
- 
-  <p>
-    <%= form.label :text %><br>
-    <%= form.text_area :text %>
-  </p>
- 
-  <p>
-    <%= form.submit %>
-  </p>
+  <div class="well">
+    <div style="overflow: hidden;">
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :first_name %><br>
+            <%= form.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :last_name %><br>
+            <%= form.text_field :last_name, class: 'form-control', placeholder: 'Last Name'  %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :email %><br>
+            <%= form.text_field :email, class: 'form-control', placeholder: 'Email' %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :phone %><br>
+            <%= form.text_field :phone, class: 'form-control', placeholder: 'Phone number'  %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :address1 %><br>
+            <%= form.text_field :address1, class: 'form-control', placeholder: 'Street address' %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :address2 %><br>
+            <%= form.text_field :address2, class: 'form-control', placeholder: 'Unit or Suite'  %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :city %><br>
+            <%= form.text_field :city, class: 'form-control', placeholder: 'City' %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :state %><br>
+            <%= form.text_field :state, class: 'form-control', placeholder: 'State'  %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :zip %><br>
+            <%= form.text_field :zip, class: 'form-control', placeholder: 'Zip' %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :occupation %><br>
+            <%= form.text_field :occupation, class: 'form-control', placeholder: 'Occupation'  %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :birthday %><br>
+            <%= form.text_field :birthday, class: 'form-control', placeholder: 'Date of Birth' %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label "What's your annual household income before tax?" %><br>
+            <%= form.text_field :annual_income, class: 'form-control', placeholder: "Annual household income?" %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label "How much is your household paycheck?" %><br>
+            <%= form.text_field :paycheck, class: 'form-control', placeholder: 'Household paycheck?' %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label "How ofter do you receive the paycheck?" %><br>
+            <%= form.text_field :paycheck_occurance, class: 'form-control', placeholder: "Every two week, Twice a month, or other" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Yes, I would like to receive occasional reminders.
+            </label>
+          </div>
+        </div>
+        <%= form.submit %>
+      </form>
+    </div>
+  </div>
+  </br>
+  </br>
 <% end %>
+
+

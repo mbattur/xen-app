@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   
   def index
-    @question = Question.all
+    @questions = Question.all
   end
 
   def show
@@ -12,7 +12,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(params[:question])
+    @question = Question.new(question_params)
 
     @question.save
     redirect_to @question
@@ -20,6 +20,12 @@ class QuestionsController < ApplicationController
 
   private
     def question_params
-      params.require(:question).permit(:first_name, :last_name)
+      params.require(:question).permit(
+        :first_name, :last_name, :email, :phone, :address1, :address2, 
+        :city, :state, :zip, :occupation, :birthday, :annual_income, 
+        :paycheck, :paycheck_occurance, :card_debt, :consumer_debt, 
+        :mortgage_balance, :retirment_contribution, :college_contribution, 
+        :cash_savings, :wanna_win
+      )
     end
 end
