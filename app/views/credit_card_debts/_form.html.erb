@@ -1,4 +1,4 @@
-<%= form_with(model: credit_card_debt, local: true) do |form| %>
+<%= form_with scope: :credit_card_debt, url: credit_card_debts_path, local: true do |form| %>
   <% if credit_card_debt.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(credit_card_debt.errors.count, "error") %> prohibited this credit_card_debt from being saved:</h2>
@@ -10,23 +10,66 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="well">
+    <div style="overflow: hidden;">
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :card_name %><br>
+            <%= form.text_field :card_name, class: 'form-control', placeholder: "What's the credit card name?" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :balance %><br>
+            <%= form.text_field :balance, class: 'form-control', placeholder: "What's the credit card balance?"  %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :card_number %><br>
+            <%= form.text_field :card_number, class: 'form-control', placeholder: "What's number of the credit card?" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :payee_name %><br>
+            <%= form.text_field :payee_name, class: 'form-control', placeholder: "What's the name of company the payment should go to?"  %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :payee_address1 %><br>
+            <%= form.text_field :payee_address1, class: 'form-control', placeholder: "What's the payee address?" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :payee_address2 %><br>
+            <%= form.text_field :payee_address2, class: 'form-control', placeholder: "Apartment, studio, or floor"  %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :payee_city %><br>
+            <%= form.text_field :payee_city, class: 'form-control', placeholder: "City" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :payee_state %><br>
+            <%= form.text_field :payee_state, class: 'form-control', placeholder: "State"  %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :payee_zip %><br>
+            <%= form.text_field :payee_zip, class: 'form-control', placeholder: "Zip" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :payee_zip %><br>
+            <%= form.text_field :payee_zip, class: 'form-control', placeholder: "Zip" %>
+          </div>
+        </div>
+        <%= form.submit 'Submit', :class => 'button' %>
+      </form>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :balance %>
-    <%= form.text_field :balance %>
-  </div>
-
-  <div class="field">
-    <%= form.label :monthly_minimum %>
-    <%= form.text_field :monthly_minimum %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  </br>
+  </br>
 <% end %>
+
+
+

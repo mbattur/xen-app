@@ -1,11 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  balance: 9.99
-  monthly_minimum: 9.99
+  card_name: MyString
+  balance: 1.5
+  card_number: 1
+  payee_name: MyString
+  payee_address1: MyString
+  payee_address2: MyString
+  payee_city: MyString
+  payee_state: MyString
+  payee_zip: 1
 
 two:
-  name: MyString
-  balance: 9.99
-  monthly_minimum: 9.99
+  card_name: MyString
+  balance: 1.5
+  card_number: 1
+  payee_name: MyString
+  payee_address1: MyString
+  payee_address2: MyString
+  payee_city: MyString
+  payee_state: MyString
+  payee_zip: 1
