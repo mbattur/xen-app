@@ -10,6 +10,41 @@
   <%= @credit_card_debt.balance %>
 </p>
 
+<p>
+  <strong>Card Number:</strong>
+  <%= @credit_card_debt.card_number %>
+</p>
+
+<p>
+  <strong>Payee Name:</strong>
+  <%= @credit_card_debt.payee_name %>
+</p>
+
+<p>
+  <strong>Payee Address1:</strong>
+  <%= @credit_card_debt.payee_address1 %>
+</p>
+
+<p>
+  <strong>Payee Address2:</strong>
+  <%= @credit_card_debt.payee_address2 %>
+</p>
+
+<p>
+  <strong>Payee City:</strong>
+  <%= @credit_card_debt.payee_city %>
+</p>
+
+<p>
+  <strong>Payee State:</strong>
+  <%= @credit_card_debt.payee_state %>
+</p>
+
+<p>
+  <strong>Payee Zip:</strong>
+  <%= @credit_card_debt.payee_zip %>
+</p>
+
 
 <%= link_to 'Edit', edit_credit_card_debt_path(@credit_card_debt) %> |
 <%= link_to 'Back', credit_card_debts_path %>

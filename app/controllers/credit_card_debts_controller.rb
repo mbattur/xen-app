@@ -69,6 +69,9 @@ class CreditCardDebtsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def credit_card_debt_params
-      params.require(:credit_card_debt).permit(:card_name, :balance, :monthly_minimum)
+      params.require(:credit_card_debt).permit(
+        :card_name, :balance, :card_number, :payee_name, 
+        :payee_address1, :payee_address2, :payee_city, :payee_state, :payee_zip
+      )
     end
 end
