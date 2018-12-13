@@ -69,6 +69,9 @@ class ConsumerDebtsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def consumer_debt_params
-      params.require(:consumer_debt).permit(:name, :balance, :monthly_minimum)
+      params.require(:consumer_debt).permit(
+        :name, :balance, :account_number, :monthly_minimum, :payee_name, 
+        :payee_address1, :payee_address2, :payee_city, :payee_state, :payee_zip
+      )
     end
 end

@@ -11,9 +11,45 @@
 </p>
 
 <p>
-  <strong>Monthly minimum:</strong>
+  <strong>Monthly Minimum:</strong>
   <%= @consumer_debt.monthly_minimum %>
 </p>
+
+<p>
+  <strong>Account Number:</strong>
+  <%= @consumer_debt.account_number %>
+</p>
+
+<p>
+  <strong>Payee Name:</strong>
+  <%= @consumer_debt.payee_name %>
+</p>
+
+<p>
+  <strong>Payee Address1:</strong>
+  <%= @consumer_debt.payee_address1 %>
+</p>
+
+<p>
+  <strong>Payee Address2:</strong>
+  <%= @consumer_debt.payee_address2 %>
+</p>
+
+<p>
+  <strong>Payee City:</strong>
+  <%= @consumer_debt.payee_city %>
+</p>
+
+<p>
+  <strong>Payee State:</strong>
+  <%= @consumer_debt.payee_state %>
+</p>
+
+<p>
+  <strong>Payee Zip:</strong>
+  <%= @consumer_debt.payee_zip %>
+</p>
+
 
 <%= link_to 'Edit', edit_consumer_debt_path(@consumer_debt) %> |
 <%= link_to 'Back', consumer_debts_path %>

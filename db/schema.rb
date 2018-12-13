@@ -14,8 +14,15 @@ ActiveRecord::Schema.define(version: 2018_12_13_120428) do
 
   create_table "consumer_debts", force: :cascade do |t|
     t.string "name"
-    t.decimal "balance"
+    t.float "balance"
     t.decimal "monthly_minimum"
+    t.integer "account_number"
+    t.string "payee_name"
+    t.string "payee_address1"
+    t.string "payee_address2"
+    t.string "payee_city"
+    t.string "payee_state"
+    t.integer "payee_zip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

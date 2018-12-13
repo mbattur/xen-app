@@ -1,4 +1,4 @@
-<%= form_with(model: consumer_debt, local: true) do |form| %>
+<%= form_with scope: :consumer_debt, url: consumer_debts_path, local: true do |form| %>
   <% if consumer_debt.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(consumer_debt.errors.count, "error") %> prohibited this consumer_debt from being saved:</h2>
@@ -10,23 +10,61 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :balance %>
-    <%= form.text_field :balance %>
-  </div>
-
-  <div class="field">
-    <%= form.label :monthly_minimum %>
-    <%= form.text_field :monthly_minimum %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="well">
+    <div style="overflow: hidden;">
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :debt_name %><br>
+            <%= form.text_field :name, class: 'form-control', placeholder: "What's the consumer debt name?" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :balance %><br>
+            <%= form.text_field :balance, class: 'form-control', placeholder: "What's the consumer debt balance?"  %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :account_number %><br>
+            <%= form.text_field :account_number, class: 'form-control', placeholder: "What's account number of the debt?" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :payee_name %><br>
+            <%= form.text_field :payee_name, class: 'form-control', placeholder: "What's the name of company the payment should go to?"  %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :payee_address1 %><br>
+            <%= form.text_field :payee_address1, class: 'form-control', placeholder: "What's the payee address?" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :payee_address2 %><br>
+            <%= form.text_field :payee_address2, class: 'form-control', placeholder: "Apartment, studio, or floor"  %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :payee_city %><br>
+            <%= form.text_field :payee_city, class: 'form-control', placeholder: "City" %>
+          </div>
+          <div class="form-group col-md-4">
+            <%= form.label :payee_state %><br>
+            <%= form.text_field :payee_state, class: 'form-control', placeholder: "State"  %>
+          </div>
+          <div class="form-group col-md-2">
+            <%= form.label :payee_zip %><br>
+            <%= form.text_field :payee_zip, class: 'form-control', placeholder: "Zip" %>
+          </div>
+        </div>
+        <div>
+          <%= form.submit 'Submit', :class => 'button' %>
+          <%= form.submit 'Enter more debt', :class => 'button-blue' %>
+        </div>
+      </form>
+    </div>
   </div>
 <% end %>
+
+
+
