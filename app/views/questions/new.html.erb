@@ -39,30 +39,31 @@
             <%= form.label :city %><br>
             <%= form.text_field :city, class: 'form-control', placeholder: 'City' %>
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-3">
             <%= form.label :state %><br>
             <%= form.text_field :state, class: 'form-control', placeholder: 'State'  %>
+          </div>
+          <div class="form-group col-md-3">
+            <%= form.label :zip %><br>
+            <%= form.text_field :zip, class: 'form-control', placeholder: 'Zip' %>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <%= form.label :zip %><br>
-            <%= form.text_field :zip, class: 'form-control', placeholder: 'Zip' %>
+            <%= form.label "What's your annual household income before tax?" %><br>
+            <%= form.text_field :annual_income, class: 'form-control', placeholder: "Annual household income?" %>
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-3">
             <%= form.label :occupation %><br>
             <%= form.text_field :occupation, class: 'form-control', placeholder: 'Occupation'  %>
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-3">
             <%= form.label :birthday %><br>
-            <%= form.text_field :birthday, class: 'form-control', placeholder: 'Date of Birth' %>
+            <%= form.date_field :birthday, class: 'form-control', placeholder: 'Date of Birth' %>
           </div>
-          <div class="form-group col-md-6">
-            <%= form.label "What's your annual household income before tax?" %><br>
-            <%= form.text_field :annual_income, class: 'form-control', placeholder: "Annual household income?" %>
-          </div>
+
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">

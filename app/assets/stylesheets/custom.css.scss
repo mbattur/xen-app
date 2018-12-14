@@ -2,16 +2,18 @@ $navbar-default-bg: black;
 
 
 #logo {
-  float: left;
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  font-weight: bold;
+  // float: left;
+  color: #1c9ba0;
+  // letter-spacing: -1px;
+  // font-weight: bold;
+}
+
+#logout {
+  float: right;
 }
 
 #logo:hover {
-  color: #fff;
+  color: #0d7377;
   text-decoration: none;
 }
 
@@ -26,14 +28,14 @@ $navbar-default-bg: black;
 }
 
 .jumbotron h1 {
-  color: black;
+  color: #1c9ba0;
   text-align: center;
   margin-bottom: 30px;
   letter-spacing: -1px;
 }
 
 .button {
-  background-color: #4CAF50; /* Green */
+  background-color: #1c9ba0; /* Green */
   border: none;
   color: white;
   padding: 8px 12px;
@@ -44,7 +46,7 @@ $navbar-default-bg: black;
 }
 
 .button-blue {
-  background-color: blue; /* Green */
+  background-color: #3d92d3; /* Green */
   border: none;
   color: white;
   padding: 8px 12px;
