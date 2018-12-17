@@ -25,6 +25,7 @@ class CreditCardDebtsController < ApplicationController
   # POST /credit_card_debts.json
   def create
     @credit_card_debt = CreditCardDebt.new(credit_card_debt_params)
+    @credit_card_debt.user = current_user
 
     respond_to do |format|
       if @credit_card_debt.save

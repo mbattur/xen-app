@@ -25,6 +25,7 @@ class ConsumerDebtsController < ApplicationController
   # POST /consumer_debts.json
   def create
     @consumer_debt = ConsumerDebt.new(consumer_debt_params)
+    @consumer_debt.user = current_user
 
     respond_to do |format|
       if @consumer_debt.save
