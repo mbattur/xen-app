@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'credit_card_debts', to: 'credit_card_debts#index'
   get 'initial_questions', to: 'users#initial_questions'
   get 'levels', to: 'users#levels'
+  get 'my_portfolio', to: 'users#my_portfolio'
   resources :questions
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

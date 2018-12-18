@@ -1,0 +1,21 @@
+<h5>My Answers</h5>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <% if @user.id == current_user.id %>
+        <th>Actions</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user_questions.each do |user_question| %>
+      <tr>
+        <td><%= user_question.first_name %></td>
+        <td><%= user_question.last_name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+<table>

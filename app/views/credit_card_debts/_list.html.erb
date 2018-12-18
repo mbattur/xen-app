@@ -1,0 +1,21 @@
+<h5>My Credit Card Debts</h5>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Balance</th>
+      <% if @user.id == current_user.id %>
+        <th>Actions</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user_credit_card_debts.each do |user_credit_card_debt| %>
+      <tr>
+        <td><%= user_credit_card_debt.card_name %></td>
+        <td><%= user_credit_card_debt.balance %></td>
+      </tr>
+    <% end %>
+  </tbody>
+<table>
