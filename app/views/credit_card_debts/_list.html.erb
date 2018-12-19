@@ -1,45 +1,44 @@
 <h5>My Credit Card Debts</h5>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Card Name</th>
-      <th>Balance</th>
-      <th>Card Number</th>
-      <th>Payee Name</th>
-      <th>Payee Address1</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @user_credit_card_debts.each do |user_credit_card_debt| %>
+<% @user_credit_card_debts.each do |user_credit_card_debt| %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Card Name</th>
+        <th>Balance</th>
+        <th>Card Number</th>
+        <th>Payee Name</th>
+      </tr>
+    </thead>
+    <tbody>
       <tr>
         <td><%= user_credit_card_debt.card_name %></td>
         <td><%= user_credit_card_debt.balance %></td>
         <td><%= user_credit_card_debt.card_number %></td>
         <td><%= user_credit_card_debt.payee_name %></td>
-        <td><%= user_credit_card_debt.payee_address1 %></td>
       </tr>
-    <% end %>
-  </tbody>
-<table>
+    </tbody>
+  <table>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Payee Address2</th>
-      <th>Payee City</th>
-      <th>Payee State</th>
-      <th>Payee Zip</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @user_credit_card_debts.each do |user_credit_card_debt| %>
+  <table class="table">
+    <thead>
       <tr>
+        <th>Payee Address1</th>
+        <th>Payee Address2</th>
+        <th>Payee City</th>
+        <th>Payee State</th>
+        <th>Payee Zip</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= user_credit_card_debt.payee_address1 %></td>
         <td><%= user_credit_card_debt.payee_address2 %></td>
         <td><%= user_credit_card_debt.payee_city %></td>
         <td><%= user_credit_card_debt.payee_state %></td>
         <td><%= user_credit_card_debt.payee_zip %></td>
       </tr>
-    <% end %>
-  </tbody>
-<table>
+    </tbody>
+  <table>
+  <hr>
+<% end %>

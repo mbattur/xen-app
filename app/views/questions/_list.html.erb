@@ -1,94 +1,88 @@
 <h5>My Answers</h5>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Address1</th>
-      <th>Address2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @user_questions.each do |user_question| %>
+<% @user_questions.each do |user_question| %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+      </tr>
+    </thead>
+    <tbody>
       <tr>
         <td><%= user_question.first_name %></td>
         <td><%= user_question.last_name %></td>
         <td><%= user_question.email %></td>
         <td><%= user_question.phone %></td>
+      </tr>
+    </tbody>
+  <table>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Address1</th>
+        <th>Address2</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
         <td><%= user_question.address1 %></td>
         <td><%= user_question.address2 %></td>
-      </tr>
-    <% end %>
-  </tbody>
-<table>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>City</th>
-      <th>State</th>
-      <th>Zip</th>
-      <th>Occupation</th>
-      <th>Birthday</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @user_questions.each do |user_question| %>
-      <tr>
         <td><%= user_question.city %></td>
         <td><%= user_question.state %></td>
         <td><%= user_question.zip %></td>
+      </tr>
+    </tbody>
+  <table>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Occupation</th>
+        <th>Birthday</th>
+        <th>Annual Income</th>
+        <th>Paycheck Amount</th>
+        <th>Paycheck Occurance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
         <td><%= user_question.occupation %></td>
         <td><%= user_question.birthday %></td>
-      </tr>
-    <% end %>
-  </tbody>
-<table>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Annual Income</th>
-      <th>Paycheck Amount</th>
-      <th>Paycheck Occurance</th>
-      <th>Total Credit Card Debt</th>
-      <th>Total Consumer Debt</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @user_questions.each do |user_question| %>
-      <tr>
         <td><%= user_question.annual_income %></td>
         <td><%= user_question.paycheck %></td>
         <td><%= user_question.paycheck_occurance %></td>
+      </tr>
+    </tbody>
+  <table>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Total Credit Card Debt</th>
+        <th>Total Consumer Debt</th>
+        <th>Mortgage Balance</th>
+        <th>Retirement Contribution</th>
+        <th>College Contribution</th>
+        <th>Cash Savings</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
         <td><%= user_question.card_debt %></td>
         <td><%= user_question.consumer_debt %></td>
-      </tr>
-    <% end %>
-  </tbody>
-<table>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Mortgage Balance</th>
-      <th>Retirement Contribution</th>
-      <th>College Contribution</th>
-      <th>Cash Savings</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @user_questions.each do |user_question| %>
-      <tr>
         <td><%= user_question.mortgage_balance %></td>
         <td><%= user_question.retirment_contribution %></td>
         <td><%= user_question.college_contribution %></td>
         <td><%= user_question.cash_savings %></td>
       </tr>
-    <% end %>
-  </tbody>
-<table>
-
+    </tbody>
+  <table>
+  <hr>
+<% end %>
