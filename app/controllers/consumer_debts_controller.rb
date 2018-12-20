@@ -29,7 +29,7 @@ class ConsumerDebtsController < ApplicationController
 
     respond_to do |format|
       if @consumer_debt.save
-        format.html { redirect_to @consumer_debt, notice: 'Consumer debt was successfully created.' }
+        format.html { redirect_to my_portfolio_path, notice: 'Consumer debt was successfully created.' }
         format.json { render :show, status: :created, location: @consumer_debt }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class ConsumerDebtsController < ApplicationController
   def update
     respond_to do |format|
       if @consumer_debt.update(consumer_debt_params)
-        format.html { redirect_to @consumer_debt, notice: 'Consumer debt was successfully updated.' }
+        format.html { redirect_to @my_portfolio_path, notice: 'Consumer debt was successfully updated.' }
         format.json { render :show, status: :ok, location: @consumer_debt }
       else
         format.html { render :edit }

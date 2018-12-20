@@ -19,6 +19,7 @@ class CreditCardDebtsController < ApplicationController
 
   # GET /credit_card_debts/1/edit
   def edit
+    @credit_card_debt = CreditCardDebt.find(params[:id])
   end
 
   # POST /credit_card_debts
@@ -29,7 +30,7 @@ class CreditCardDebtsController < ApplicationController
 
     respond_to do |format|
       if @credit_card_debt.save
-        format.html { redirect_to @credit_card_debt, notice: 'Credit card debt was successfully created.' }
+        format.html { redirect_to my_portfolio_path, notice: 'Credit card debt was successfully created.' }
         format.json { render :show, status: :created, location: @credit_card_debt }
       else
         format.html { render :new }
@@ -43,7 +44,7 @@ class CreditCardDebtsController < ApplicationController
   def update
     respond_to do |format|
       if @credit_card_debt.update(credit_card_debt_params)
-        format.html { redirect_to @credit_card_debt, notice: 'Credit card debt was successfully updated.' }
+        format.html { redirect_to my_portfolio_path, notice: 'Credit card debt was successfully updated.' }
         format.json { render :show, status: :ok, location: @credit_card_debt }
       else
         format.html { render :edit }
