@@ -1,4 +1,4 @@
-<%= form_with scope: :consumer_debt, url: consumer_debts_path, local: true do |form| %>
+<%= form_for(@consumer_debt, :html => { role: "form" }) do |form| %>
   <% if consumer_debt.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(consumer_debt.errors.count, "error") %> prohibited this consumer_debt from being saved:</h2>
