@@ -40,5 +40,11 @@
       </tr>
     </tbody>
   <table>
-  <%= link_to 'Edit', edit_credit_card_debt_path(user_credit_card_debt.id), class: 'button right' %>
+  <div>
+    <%= link_to 'Delete', credit_card_debt_path(user_credit_card_debt.id), method: :delete,
+                                                  data: { confirm: "Are you sure you want to delete this?"},
+                                                  class: 'button-danger right' %>
+
+    <%= link_to 'Edit', edit_credit_card_debt_path(user_credit_card_debt.id), class: 'button right' %>
+  </div>
 <% end %>

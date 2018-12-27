@@ -42,6 +42,18 @@ $navbar-default-bg: black;
   color: #1c9ba0;
 }
 
+.button-danger {
+  background-color: red; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  margin-left: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+}
+
 .button {
   background-color: #1c9ba0; /* Green */
   border: none;
