@@ -1,94 +1,91 @@
 <h4 class='xen-color'>My Answers</h4>
 
 <% @user_questions.each do |user_question| %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= user_question.first_name %></td>
-        <td><%= user_question.last_name %></td>
-        <td><%= user_question.email %></td>
-        <td><%= user_question.phone %></td>
-      </tr>
-    </tbody>
-  <table>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Address1</th>
-        <th>Address2</th>
-        <th>City</th>
-        <th>State</th>
-        <th>Zip</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= user_question.address1 %></td>
-        <td><%= user_question.address2 %></td>
-        <td><%= user_question.city %></td>
-        <td><%= user_question.state %></td>
-        <td><%= user_question.zip %></td>
-      </tr>
-    </tbody>
-  <table>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Occupation</th>
-        <th>Birthday</th>
-        <th>Annual Income</th>
-        <th>Paycheck Amount</th>
-        <th>Paycheck Occurance</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= user_question.occupation %></td>
-        <td><%= user_question.birthday %></td>
-        <td><%= user_question.annual_income %></td>
-        <td><%= user_question.paycheck %></td>
-        <td><%= user_question.paycheck_occurance %></td>
-      </tr>
-    </tbody>
-  <table>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Total Credit Card Debt</th>
-        <th>Total Consumer Debt</th>
-        <th>Mortgage Balance</th>
-        <th>Retirement Contribution</th>
-        <th>College Contribution</th>
-        <th>Cash Savings</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= user_question.card_debt %></td>
-        <td><%= user_question.consumer_debt %></td>
-        <td><%= user_question.mortgage_balance %></td>
-        <td><%= user_question.retirment_contribution %></td>
-        <td><%= user_question.college_contribution %></td>
-        <td><%= user_question.cash_savings %></td>
-      </tr>
-    </tbody>
-  <table>
+  <p>
+    <strong>Title:</strong>
+    <%= user_question.first_name %>
+  </p>
+  <p>
+    <strong>Text:</strong>
+    <%= user_question.last_name %>
+  </p>
+  <p>
+    <strong>Email:</strong>
+    <%= user_question.email %>
+  </p>
+  <p>
+    <strong>Phone:</strong>
+    <%= user_question.phone %>
+  </p>
+  <p>
+    <strong>Address1:</strong>
+    <%= user_question.address1 %>
+  </p>
+  <p>
+    <strong>Address2:</strong>
+    <%= user_question.address2 %>
+  </p>
+  <p>
+    <strong>City:</strong>
+    <%= user_question.city %>
+  </p>
+  <p>
+    <strong>State:</strong>
+    <%= user_question.state %>
+  </p>
+  <p>
+    <strong>Zip Code:</strong>
+    <%= user_question.zip %>
+  </p>
+  <p>
+    <strong>Occupation:</strong>
+    <%= user_question.occupation %>
+  </p>
+  <p>
+    <strong>Birthday:</strong>
+    <%= user_question.birthday %>
+  </p>
+  <p>
+    <strong>Annual Income:</strong>
+    <%= user_question.annual_income %>
+  </p>
+  <p>
+    <strong>Paycheck Amount:</strong>
+    <%= user_question.paycheck %>
+  </p>
+  <p>
+    <strong>Paycheck Occurance:</strong>
+    <%= user_question.paycheck_occurance %>
+  </p>
+  <p>
+    <strong>Credit Card Debt:</strong>
+    <%= user_question.card_debt %>
+  </p>
+  <p>
+    <strong>Consumer Debt:</strong>
+    <%= user_question.consumer_debt %>
+  </p>
+  <p>
+    <strong>Mortgage Balance:</strong>
+    <%= user_question.mortgage_balance %>
+  </p>
+  <p>
+    <strong>Retirement Contribution (Monthly):</strong>
+    <%= user_question.retirment_contribution %>
+  </p>
+  <p>
+    <strong>College Contribution (Monthly):</strong>
+    <%= user_question.college_contribution %>
+  </p>
+  <p>
+    <strong>Cash on Hand:</strong>
+    <%= user_question.cash_savings %>
+  </p>
   <div>
+    <%= link_to 'Edit', edit_question_path(user_question.id), class: 'button' %>
+
     <%= link_to 'Delete', question_path(user_question.id), method: :delete,
                                                   data: { confirm: "Are you sure you want to delete this?"},
-                                                  class: 'button-danger right' %>
-
-    <%= link_to 'Edit', edit_question_path(user_question.id), class: 'button right' %>
+                                                  class: 'button-danger' %>
   </div>
 <% end %>
