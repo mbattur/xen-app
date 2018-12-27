@@ -1,57 +1,63 @@
 <h4 class='xen-color'>My Credit Card Debts</h4>
 
-<% @user_credit_card_debts.each do |user_credit_card_debt| %>
-<p>
-  <strong>Name:</strong>
-  <%= user_credit_card_debt.card_name %>
-</p>
+<% if @user_credit_card_debts.present?%>
+  <% @user_credit_card_debts.each do |user_credit_card_debt| %>
+    <p>
+      <strong>Name:</strong>
+      <%= user_credit_card_debt.card_name %>
+    </p>
 
-<p>
-  <strong>Balance:</strong>
-  <%= user_credit_card_debt.balance %>
-</p>
+    <p>
+      <strong>Balance:</strong>
+      <%= user_credit_card_debt.balance %>
+    </p>
 
-<p>
-  <strong>Card Number:</strong>
-  <%= user_credit_card_debt.card_number %>
-</p>
+    <p>
+      <strong>Card Number:</strong>
+      <%= user_credit_card_debt.card_number %>
+    </p>
 
-<p>
-  <strong>Payee Name:</strong>
-  <%= user_credit_card_debt.payee_name %>
-</p>
+    <p>
+      <strong>Payee Name:</strong>
+      <%= user_credit_card_debt.payee_name %>
+    </p>
 
-<p>
-  <strong>Payee Address1:</strong>
-  <%= user_credit_card_debt.payee_address1 %>
-</p>
+    <p>
+      <strong>Payee Address1:</strong>
+      <%= user_credit_card_debt.payee_address1 %>
+    </p>
 
-<p>
-  <strong>Payee Address2:</strong>
-  <%= user_credit_card_debt.payee_address2 %>
-</p>
+    <p>
+      <strong>Payee Address2:</strong>
+      <%= user_credit_card_debt.payee_address2 %>
+    </p>
 
-<p>
-  <strong>Payee City:</strong>
-  <%= user_credit_card_debt.payee_city %>
-</p>
+    <p>
+      <strong>Payee City:</strong>
+      <%= user_credit_card_debt.payee_city %>
+    </p>
 
-<p>
-  <strong>Payee State:</strong>
-  <%= user_credit_card_debt.payee_state %>
-</p>
+    <p>
+      <strong>Payee State:</strong>
+      <%= user_credit_card_debt.payee_state %>
+    </p>
 
-<p>
-  <strong>Payee Zip:</strong>
-  <%= user_credit_card_debt.payee_zip %>
-</p>
-  <div>
-    <%= link_to 'Edit', edit_credit_card_debt_path(user_credit_card_debt.id), class: 'button' %>
+    <p>
+      <strong>Payee Zip:</strong>
+      <%= user_credit_card_debt.payee_zip %>
+    </p>
+      <div>
+        <%= link_to 'Edit', edit_credit_card_debt_path(user_credit_card_debt.id), class: 'button' %>
 
-    <%= link_to 'Delete', credit_card_debt_path(user_credit_card_debt.id), method: :delete,
-                                                  data: { confirm: "Are you sure you want to delete this?"},
-                                                  class: 'button-danger' %>
-  </div>
-</br>
-</br>
+        <%= link_to 'Delete', credit_card_debt_path(user_credit_card_debt.id), method: :delete,
+                                                      data: { confirm: "Are you sure you want to delete this?"},
+                                                      class: 'button-danger' %>
+      </div>
+    </br>
+    </br>
+  <% end %>
+<% else %>
+  <h5>You have no credit card debt, YAAAY!!!</h5>
+  </br>
 <% end %>
+

@@ -58,7 +58,7 @@ class CreditCardDebtsController < ApplicationController
   def destroy
     @credit_card_debt.destroy
     respond_to do |format|
-      format.html { redirect_to credit_card_debts_url, notice: 'Credit card debt was successfully destroyed.' }
+      format.html { redirect_to my_portfolio_path, notice: 'Credit card debt was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

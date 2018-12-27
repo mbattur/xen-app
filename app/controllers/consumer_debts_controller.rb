@@ -57,7 +57,7 @@ class ConsumerDebtsController < ApplicationController
   def destroy
     @consumer_debt.destroy
     respond_to do |format|
-      format.html { redirect_to consumer_debts_url, notice: 'Consumer debt was successfully destroyed.' }
+      format.html { redirect_to my_portfolio_path, notice: 'Consumer debt was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

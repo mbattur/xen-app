@@ -5,102 +5,102 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <%= form.label :first_name %><br>
-            <%= form.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
+            <%= form.text_field :first_name, class: 'form-control', :required => true, placeholder: 'First Name' %>
           </div>
           <div class="form-group col-md-6">
             <%= form.label :last_name %><br>
-            <%= form.text_field :last_name, class: 'form-control', placeholder: 'Last Name'  %>
+            <%= form.text_field :last_name, class: 'form-control', :required => true, placeholder: 'Last Name'  %>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <%= form.label :email %><br>
-            <%= form.text_field :email, class: 'form-control', placeholder: 'Email' %>
+            <%= form.text_field :email, class: 'form-control', :required => true, placeholder: 'Email' %>
           </div>
           <div class="form-group col-md-6">
             <%= form.label :phone %><br>
-            <%= form.text_field :phone, class: 'form-control', placeholder: 'Phone number'  %>
+            <%= form.text_field :phone, class: 'form-control', :required => true, placeholder: 'Phone number'  %>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <%= form.label :address1 %><br>
-            <%= form.text_field :address1, class: 'form-control', placeholder: 'Street address' %>
+            <%= form.text_field :address1, class: 'form-control', :required => true, placeholder: 'Street address' %>
           </div>
           <div class="form-group col-md-6">
             <%= form.label :address2 %><br>
-            <%= form.text_field :address2, class: 'form-control', placeholder: 'Unit or Suite'  %>
+            <%= form.text_field :address2, class: 'form-control', :required => true, placeholder: 'Unit or Suite'  %>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <%= form.label :city %><br>
-            <%= form.text_field :city, class: 'form-control', placeholder: 'City' %>
+            <%= form.text_field :city, class: 'form-control', :required => true, placeholder: 'City' %>
           </div>
           <div class="form-group col-md-3">
             <%= form.label :state %><br>
-            <%= form.text_field :state, class: 'form-control', placeholder: 'State'  %>
+            <%= form.text_field :state, class: 'form-control', :required => true, placeholder: 'State'  %>
           </div>
           <div class="form-group col-md-3">
             <%= form.label :zip %><br>
-            <%= form.text_field :zip, class: 'form-control', placeholder: 'Zip' %>
+            <%= form.text_field :zip, class: 'form-control', :required => true, placeholder: 'Zip' %>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <%= form.label "What's your annual household income before tax?" %><br>
-            <%= form.text_field :annual_income, class: 'form-control', placeholder: "Annual household income?" %>
+            <%= form.text_field :annual_income, class: 'form-control', :required => true, placeholder: "Annual household income?" %>
           </div>
           <div class="form-group col-md-3">
             <%= form.label :occupation %><br>
-            <%= form.text_field :occupation, class: 'form-control', placeholder: 'Occupation'  %>
+            <%= form.text_field :occupation, class: 'form-control', :required => true, placeholder: 'Occupation'  %>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-3">
             <%= form.label :birthday %><br>
-            <%= form.date_field :birthday, class: 'form-control', placeholder: 'Date of Birth' %>
+            <%= form.date_field :birthday, class: 'form-control', :required => true, placeholder: 'Date of Birth' %>
           </div>
 
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <%= form.label "How much is your household paycheck?" %><br>
-            <%= form.text_field :paycheck, class: 'form-control', placeholder: 'Household paycheck?' %>
+            <%= form.text_field :paycheck, class: 'form-control', :required => true, placeholder: 'Household paycheck?' %>
           </div>
           <div class="form-group col-md-6">
             <%= form.label "How often do you receive the paycheck?" %><br>
-            <%= form.text_field :paycheck_occurance, class: 'form-control', placeholder: "Every two week, Twice a month, or other" %>
+            <%= form.text_field :paycheck_occurance, class: 'form-control', :required => true, placeholder: "Every two week, Twice a month, or other" %>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <%= form.label "What's your total credit card debt?" %><br>
-            <%= form.text_field :card_debt, class: 'form-control', placeholder: 'Total credit card debt?' %>
+            <%= form.text_field :card_debt, class: 'form-control', :required => true, placeholder: 'Total credit card debt?' %>
           </div>
           <div class="form-group col-md-6">
             <%= form.label "What's your total consumer debt?" %><br>
-            <%= form.text_field :consumer_debt, class: 'form-control', placeholder: "Medical or tax debts, car or student loans, etc.," %>
+            <%= form.text_field :consumer_debt, class: 'form-control', :required => true, placeholder: "Medical or tax debts, car or student loans, etc.," %>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <%= form.label "What's your total mortgage balance?" %><br>
-            <%= form.text_field :mortgage_balance, class: 'form-control', placeholder: 'Total mortgage balance' %>
+            <%= form.text_field :mortgage_balance, class: 'form-control', :required => true, placeholder: 'Total mortgage balance' %>
           </div>
           <div class="form-group col-md-6">
             <%= form.label "What's your monthly retirement contribution?" %><br>
-            <%= form.text_field :retirment_contribution, class: 'form-control', placeholder: "401k, Ira, or others" %>
+            <%= form.text_field :retirment_contribution, class: 'form-control', :required => true, placeholder: "401k, Ira, or others" %>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <%= form.label "What's your monthly college saving contribution?" %><br>
-            <%= form.text_field :college_contribution, class: 'form-control', placeholder: '529, ESA, and others' %>
+            <%= form.text_field :college_contribution, class: 'form-control', :required => true, placeholder: '529, ESA, and others' %>
           </div>
           <div class="form-group col-md-6">
             <%= form.label "How much cash do you have?" %><br>
-            <%= form.text_field :cash_savings, class: 'form-control', placeholder: "Liquid cash on hand" %>
+            <%= form.text_field :cash_savings, class: 'form-control', :required => true, placeholder: "Liquid cash on hand" %>
           </div>
         </div>
         <div class="form-group">
