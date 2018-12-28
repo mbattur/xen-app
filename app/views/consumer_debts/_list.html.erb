@@ -51,9 +51,10 @@
       <strong>Payee Zip:</strong>
       <%= user_consumer_debt.payee_zip %>
     </p>
+    </br>
     <div>
       <%= link_to 'Edit', edit_consumer_debt_path(user_consumer_debt.id), class: 'button' %>
-
+      <%= link_to 'Add', new_consumer_debt_path, class: 'button-blue'%>
       <%= link_to 'Delete', consumer_debt_path(user_consumer_debt.id), method: :delete,
                                                     data: { confirm: "Are you sure you want to delete this?"},
                                                     class: 'button-danger' %>
@@ -62,6 +63,7 @@
     </br>
   <% end %>
 <% else %>
-    <h5>You have no consumer debt, YAAAY!!!</h5>
+  <h5>You have no consumer debt, YAAAY!!! If you want to add one here's the link.</h5>
+  <%= link_to 'Add Consumer Debt', new_consumer_debt_path, class: 'button' %>
   </br>
 <% end %>

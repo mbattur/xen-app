@@ -46,18 +46,20 @@
       <strong>Payee Zip:</strong>
       <%= user_credit_card_debt.payee_zip %>
     </p>
-      <div>
-        <%= link_to 'Edit', edit_credit_card_debt_path(user_credit_card_debt.id), class: 'button' %>
-
-        <%= link_to 'Delete', credit_card_debt_path(user_credit_card_debt.id), method: :delete,
-                                                      data: { confirm: "Are you sure you want to delete this?"},
-                                                      class: 'button-danger' %>
-      </div>
+    </br>
+    <div>
+      <%= link_to 'Edit', edit_credit_card_debt_path(user_credit_card_debt.id), class: 'button' %>
+      <%= link_to 'Add', new_credit_card_debt_path, class: 'button-blue'%>
+      <%= link_to 'Delete', credit_card_debt_path(user_credit_card_debt.id), method: :delete,
+                                                    data: { confirm: "Are you sure you want to delete this?"},
+                                                    class: 'button-danger' %>
+    </div>
     </br>
     </br>
   <% end %>
 <% else %>
-  <h5>You have no credit card debt, YAAAY!!!</h5>
+  <h5>You have no credit card debt, YAAAY!!! If you want to add one here's the link.</h5>
+  <%= link_to 'Add Credit Card', new_credit_card_debt_path, class: 'button' %>
   </br>
 <% end %>
 
