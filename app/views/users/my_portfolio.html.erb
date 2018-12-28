@@ -3,15 +3,15 @@
 
 <div class="bs-example">
   <div class="panel-group" id="accordion">
-    <div class="panel panel-default">
+    <div class="panel">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Credit Card Debt</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Credit Card Debts</a>
         </h4>
       </div>
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Consumer Debt</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Consumer Debts</a>
         </h4>
       </div>
       <div class="panel-heading">
@@ -19,25 +19,23 @@
           <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Questions</a>
         </h4>
       </div>
-      <div id="collapseOne" class="panel-collapse collapse in">
+    </div>
+    <div class="panel">
+      <div id="collapseOne" class="panel-collapse collapse">
         <div class="panel-body">
-           <%= render 'credit_card_debts/list' %>
+          <%= render 'credit_card_debts/list' %>
+        </div>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse">
+        <div class="panel-body">
+          <%= render 'consumer_debts/list' %>
+        </div>
+      </div>
+      <div id="collapseThree" class="panel-collapse collapse">
+        <div class="panel-body">
+          <%= render 'questions/list' %>
         </div>
       </div>
     </div>
-    <div class="panel panel-default">
-        <div id="collapseTwo" class="panel-collapse collapse">
-            <div class="panel-body">
-              <%= render 'consumer_debts/list' %>
-            </div>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div id="collapseThree" class="panel-collapse collapse">
-            <div class="panel-body">
-            <%= render 'questions/list' %>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>
-
