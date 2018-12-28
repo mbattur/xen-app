@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  helper_method :smallest_balance, :largest_balance
+  helper_method :cash_on_hand, :sorted_consumer_debts, :sorted_credit_card_debts, 
+                :smallest_balance, :largest_balance
 
   def my_portfolio
     @user_credit_card_debts = current_user.credit_card_debts
@@ -8,21 +9,33 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  def smallest_balance
-    balance_array = []
-    @user_consumer_debts.all.each do |debt|
-      balance_array.push(debt.balance)
+  def cash_on_hand
+    cash_array = []
+
+    @user_questions.all.each do |debt|
+      cash_array.push(debt)
     end
-    balance_array.min
+    cash_array
   end
 
-  def largest_balance
+  def sorted_consumer_debts
     balance_array = []
+
     @user_consumer_debts.all.each do |debt|
-      balance_array.push(debt.balance)
+      balance_array.push(debt)
     end
-    balance_array.max
+    balance_array.sort_by &:balance
   end
+
+  def sorted_credit_card_debts
+    balance_array = []
+
+    @user_credit_card_debts.all.each do |debt|
+      balance_array.push(debt)
+    end
+    balance_array.sort_by &:balance
+  end
+
 
   def consumer_debts
 
