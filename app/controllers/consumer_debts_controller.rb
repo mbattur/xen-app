@@ -1,6 +1,6 @@
 class ConsumerDebtsController < ApplicationController
   before_action :set_consumer_debt, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /consumer_debts
   # GET /consumer_debts.json
   def index
