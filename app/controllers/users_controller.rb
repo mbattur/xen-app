@@ -2,6 +2,13 @@ class UsersController < ApplicationController
   helper_method :cash_on_hand, :sorted_consumer_debts, :sorted_credit_card_debts, 
                 :smallest_balance, :largest_balance
 
+  def levels
+    @user_credit_card_debts = current_user.credit_card_debts
+    @user_consumer_debts = current_user.consumer_debts
+    @user_questions = current_user.questions
+    @user = current_user
+  end
+  
   def my_portfolio
     @user_credit_card_debts = current_user.credit_card_debts
     @user_consumer_debts = current_user.consumer_debts
@@ -42,10 +49,6 @@ class UsersController < ApplicationController
   end
 
   def initial_questions
-
-  end
-
-  def levels
 
   end
 end

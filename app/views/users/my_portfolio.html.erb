@@ -1,39 +1,4 @@
-<h3>My Portfolio</h3>
-
-<h4>Level 1 - Small emergency fund</h4>
-<% cash_on_hand.each do |cash| %>
-  <p>You currently have <%= cash.cash_savings %> dollars on hand. We will leave $1,000 and use rest of it for the next level</p>
-<% end %>
-
-</br>
-
-<% if @user_credit_card_debts.present?%>
-  <h4>Level 2 - Pay off all credit cards</h4>
-  <h5> Here is the order the credit card will be paid off, smallest to largest.</h5>
-  <% sorted_credit_card_debts.each do |debt| %>
-    <ul>
-      <li><%= debt.card_name %> with balance off <%= debt.balance %>.</li>
-    </ul>
-  <% end %>
-<% else %>
-  <h4>Level 2 - Pay off all credit cards</h4>
-  <h4>You have no credit card debts. YAAAY! We move on to next level.</h4>
-<% end %>
-
-</br>
-
-<% if @user_consumer_debts.present?%>
-  <h4>Level 3 - Pay off all consumer debts</h4>
-  <h5> Here is the order the consumer debts will be paid off, smallest to largest.</h5>
-  <% sorted_consumer_debts.each do |debt| %>
-    <ul>
-      <li><%= debt.name %> with balance off <%= debt.balance %>.</li>
-    </ul>
-  <% end %>
-<% else %>
-  <h4>Level 3 - Pay off all consumer debts</h4>
-  <h4>You have no consumer debts. YAAAY! We move on to next level.</h4>
-<% end %>
+<h3>My Dashboard</h3>
 
 <div class="bs-example">
   <div class="panel-group" id="accordion">
