@@ -54,6 +54,19 @@ $navbar-default-bg: black;
   font-size: 14px;
 }
 
+.button-link {
+  background-color: #1c9ba0; /* Green */
+  float: right;
+  border: none;
+  color: white;
+  padding: 1px 10px;
+  margin-right: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+}
+
 .button {
   background-color: #1c9ba0; /* Green */
   border: none;
