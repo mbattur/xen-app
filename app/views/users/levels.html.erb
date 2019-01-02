@@ -1,6 +1,6 @@
 <h3>My Status</h3>
-<p>You're currently at Level 4. <strong>MAKE IT DYNAMIC</strong></p>
-
+<p>You're currently at Level <%= current_level %>.
+</br>
 </br>
 
 <h4 class="xen-color">Level 1 - Stack account</h4>
@@ -9,7 +9,7 @@
 
 </br>
 
-<h4 class="xen-color">Level 2 - Small emergency fund</h4>
+<h4 class="xen-color">Level 2 - Small emergency fund of $1,000</h4>
 <% cash_on_hand.each do |cash| %>
   <p>You currently have <%= cash.cash_savings %> dollars on hand. We will leave $1,000 and use rest of it for the next level</p>
 <% end %>
@@ -46,7 +46,7 @@
 
 </br>
 
-<h4 class="xen-color">Level 5 - Big emergency fund</h4>
+<h4 class="xen-color">Level 5 - Big emergency fund of $15,000</h4>
   <h3>MAKE THIS DYNAMIC!!!</h3>
   
 </br>

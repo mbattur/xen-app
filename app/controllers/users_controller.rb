@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  helper_method :cash_on_hand, :sorted_consumer_debts, :sorted_credit_card_debts, 
-                :smallest_balance, :largest_balance
+  helper_method :cash_on_hand, :sorted_consumer_debts, :sorted_credit_card_debts,
+                :smallest_balance, :largest_balance, :current_level
 
   def levels
     @user_credit_card_debts = current_user.credit_card_debts
@@ -14,6 +14,29 @@ class UsersController < ApplicationController
     @user_consumer_debts = current_user.consumer_debts
     @user_questions = current_user.questions
     @user = current_user
+  end
+
+  def current_level
+    level = 1
+    card = @user_credit_card_debts.present?
+    consumer = @user_consumer_debts.present?
+
+    @user_questions.all.each do |question|
+      if question.cash_savings <= 1000
+        level = 2
+      elsif question.cash_savings >= 1000 && card
+        level = 3
+      elsif question.cash_savings >= 1000 && !card && consumer
+        level = 4
+      elsif question.cash_savings <= 15000 && !card && !consumer
+        level = 5
+      elsif question.cash_savings >= 15000 && !card && !consumer && question.retirment_contribution <= 0
+        level = 6
+      else
+        level = 7
+      end
+    end
+    level
   end
 
   def cash_on_hand
