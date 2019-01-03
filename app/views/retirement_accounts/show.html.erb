@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @retirement_account.balance %>
+</p>
+
+<%= link_to 'Edit', edit_retirement_account_path(@retirement_account) %> |
+<%= link_to 'Back', retirement_accounts_path %>

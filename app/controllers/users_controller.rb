@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     @user_consumer_debts = current_user.consumer_debts
     @user_questions = current_user.questions
     @user_stack_accounts = current_user.stack_account
+    @user_small_emergency = current_user.small_emergency
+    @user_big_emergency = current_user.big_emergency
+    @user_retirement_account = current_user.retirement_account
+    @user_mortgage_account = current_user.mortgage_account
     @user = current_user
   end
   

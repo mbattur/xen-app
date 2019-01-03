@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Big Emergencies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Balance</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @big_emergencies.each do |big_emergency| %>
+      <tr>
+        <td><%= big_emergency.balance %></td>
+        <td><%= link_to 'Show', big_emergency %></td>
+        <td><%= link_to 'Edit', edit_big_emergency_path(big_emergency) %></td>
+        <td><%= link_to 'Destroy', big_emergency, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Big Emergency', new_big_emergency_path %>

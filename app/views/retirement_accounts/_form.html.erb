@@ -1,0 +1,22 @@
+<%= form_with(model: retirement_account, local: true) do |form| %>
+  <% if retirement_account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(retirement_account.errors.count, "error") %> prohibited this retirement_account from being saved:</h2>
+
+      <ul>
+      <% retirement_account.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :balance %>
+    <%= form.text_field :balance %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

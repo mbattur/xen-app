@@ -1,0 +1,22 @@
+<%= form_with(model: big_emergency, local: true) do |form| %>
+  <% if big_emergency.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(big_emergency.errors.count, "error") %> prohibited this big_emergency from being saved:</h2>
+
+      <ul>
+      <% big_emergency.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :balance %>
+    <%= form.text_field :balance %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

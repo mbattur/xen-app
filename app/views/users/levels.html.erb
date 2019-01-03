@@ -4,8 +4,9 @@
 </br>
 
 <h4 class="xen-color">Level 1 - Stack account</h4>
-  <p>Your stack account is at $<%= @user_stack_accounts.balance %> . That means we have $<%= stack_account_remaining %> left to go until we reach $2,000.</p>
-  
+  <% if @user_stack_accounts.present? %>
+    <p>Your stack account is at $<%= @user_stack_accounts.balance %> . That means we have $<%= stack_account_remaining %> left to go until we reach $2,000.</p>
+  <% end %>
 </br>
 
 <h4 class="xen-color">Level 2 - Small emergency fund of $1,000</h4>
@@ -46,16 +47,27 @@
 </br>
 
 <h4 class="xen-color">Level 5 - Big emergency fund of $15,000</h4>
-  <h3>MAKE THIS DYNAMIC!!!</h3>
-  
+  <% if @user_big_emergency.present? %>
+    <p>Your big emergency is at $<%= @user_big_emergency.balance %></p>
+  <% else %>
+    <p>We need to work on big emergency</p>
+  <% end %>
 </br>
 
 <h4 class="xen-color">Level 6 - Retirement savings</h4>
-  <h3>MAKE THIS DYNAMIC!!!</h3>
+  <% if @user_retirement_account.present? %>
+    <p>Your retirement account is at $<%= @user_retirement_account.balance %></p>
+  <% else %>
+    <p>We need to work on retirement account</p>
+  <% end %>
   
 </br>
 
 <h4 class="xen-color">Level 7 - Payoff mortgage early</h4>
-  <h3>MAKE THIS DYNAMIC!!!</h3>
+  <% if @user_mortgage_account.present? %>
+    <p>Your mortgage account is at $<%= @user_mortgage_account.balance %></p>
+  <% else %>
+    <p>We need to work on mortgage account</p>
+  <% end %>
   
 </br>

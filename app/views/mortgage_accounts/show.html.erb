@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @mortgage_account.balance %>
+</p>
+
+<%= link_to 'Edit', edit_mortgage_account_path(@mortgage_account) %> |
+<%= link_to 'Back', mortgage_accounts_path %>

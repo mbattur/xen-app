@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :mortgage_accounts
+  resources :retirement_accounts
+  resources :big_emergencies
+  resources :small_emergencies
   resources :stack_accounts
   resources :consumer_debts
   resources :credit_card_debts

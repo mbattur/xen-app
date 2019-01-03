@@ -1,0 +1,2 @@
+module SmallEmergenciesHelper
+end
