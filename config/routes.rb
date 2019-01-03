@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :stack_accounts
   resources :consumer_debts
   resources :credit_card_debts
   devise_for :users

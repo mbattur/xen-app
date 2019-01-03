@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
   helper_method :cash_on_hand, :sorted_consumer_debts, :sorted_credit_card_debts,
-                :smallest_balance, :largest_balance, :current_level
+                :smallest_balance, :largest_balance, :current_level, :stack_account_remaining
 
   def levels
     @user_credit_card_debts = current_user.credit_card_debts
     @user_consumer_debts = current_user.consumer_debts
     @user_questions = current_user.questions
+    @user_stack_accounts = current_user.stack_account
     @user = current_user
   end
   
@@ -14,6 +15,11 @@ class UsersController < ApplicationController
     @user_consumer_debts = current_user.consumer_debts
     @user_questions = current_user.questions
     @user = current_user
+  end
+
+  def stack_account_remaining
+    remaining = 2000 - @user_stack_accounts.balance
+    remaining
   end
 
   def current_level

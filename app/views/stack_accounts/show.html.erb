@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @stack_account.balance %>
+</p>
+
+<%= link_to 'Edit', edit_stack_account_path(@stack_account) %> |
+<%= link_to 'Back', stack_accounts_path %>
