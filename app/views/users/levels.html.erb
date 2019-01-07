@@ -1,10 +1,9 @@
-<h3>My Status</h3>
-<p>You're currently at Level <%= current_level %>.
-<p>Your stack account is at $<%= @user_stack_accounts.balance %>.
-<p>Your stack small emergency is at $<%= @user_small_emergency.balance %>.
-<p>Your stack big emergency is at $<%= @user_big_emergency.balance %>.
-<p>Your stack retirement account is at $<%= @user_retirement_account.balance %>.
-<p>Your stack mortgage account is at $<%= @user_mortgage_account.balance %>.
+<h3>My Status - Level <%= current_level %></h3>
+<p>Your stack account is at $<%= @user_stack_accounts.balance %>.</p>
+<p>Your stack small emergency is at $<%= @user_small_emergency.balance %>.</p>
+<p>Your stack big emergency is at $<%= @user_big_emergency.balance %>.</p>
+<p>Your stack retirement account is at $<%= @user_retirement_account.balance %>.</p>
+<p>Your stack mortgage account is at $<%= @user_mortgage_account.balance %>.</p>
 </br>
 </br>
 
@@ -33,7 +32,7 @@
       </ul>
     <% end %>
   <% else %>
-    <h5>You have no credit card debts. YAAAY! We move on to next level.</h5>
+    <h5>You have no credit card debts. YAAAY! Let's move on to the next level.</h5>
   <% end %>
 
 </br>
@@ -47,7 +46,7 @@
       </ul>
     <% end %>
   <% else %>
-    <h5>You have no consumer debts. YAAAY! We move on to next level.</h5>
+    <h5>You have no consumer debts. YAAAY! Let's move on to the next level.</h5>
   <% end %>
 
 </br>
