@@ -27,26 +27,28 @@ class UsersController < ApplicationController
   end
 
   def current_level
-    level = 1
-    card = @user_credit_card_debts.present?
-    consumer = @user_consumer_debts.present?
+    has_card_debt = @user_credit_card_debts.present?
+    has_consumer_debt = @user_consumer_debts.present?
+    small_em = @user_small_emergency.balance
+    big_em = @user_big_emergency.balance
+    retire = @user_retirement_account.balance
 
-    @user_questions.all.each do |question|
-      if question.cash_savings <= 1000
-        level = 2
-      elsif question.cash_savings >= 1000 && card
-        level = 3
-      elsif question.cash_savings >= 1000 && !card && consumer
-        level = 4
-      elsif question.cash_savings <= 15000 && !card && !consumer
-        level = 5
-      elsif question.cash_savings >= 15000 && !card && !consumer && question.retirment_contribution <= 0
-        level = 6
-      else
-        level = 7
-      end
+    if small_em > 1000 && big_em > 15000  && !has_card_debt && !has_consumer_debt && retire > 0
+      level = 7
+    elsif small_em > 1000 && big_em > 15000  && !has_card_debt && !has_consumer_debt
+      level = 6
+    elsif small_em > 1000 && big_em <= 15000 && !has_card_debt && !has_consumer_debt
+      level = 5
+    elsif small_em > 1000 && !has_card_debt && has_consumer_debt
+      level = 4
+    elsif small_em > 1000 && has_card_debt
+      level = 3
+    elsif small_em > 0
+      level = 2
+    else
+      level = 1
     end
-    level
+
   end
 
   def cash_on_hand

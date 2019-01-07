@@ -1,5 +1,10 @@
 <h3>My Status</h3>
 <p>You're currently at Level <%= current_level %>.
+<p>Your stack account is at $<%= @user_stack_accounts.balance %>.
+<p>Your stack small emergency is at $<%= @user_small_emergency.balance %>.
+<p>Your stack big emergency is at $<%= @user_big_emergency.balance %>.
+<p>Your stack retirement account is at $<%= @user_retirement_account.balance %>.
+<p>Your stack mortgage account is at $<%= @user_mortgage_account.balance %>.
 </br>
 </br>
 
@@ -10,39 +15,40 @@
 </br>
 
 <h4 class="xen-color">Level 2 - Small emergency fund of $1,000</h4>
-<% cash_on_hand.each do |cash| %>
-  <p>You currently have <%= cash.cash_savings %> dollars on hand. We will leave $1,000 and use rest of it for the next level</p>
-<% end %>
+  <% if @user_small_emergency.balance >= 0 %>
+    <p>Your small emergency account currently has $<%= @user_small_emergency.balance %>.
+  <% else %>
+    <p>This is your next level.</p>
+  <% end %>
+
+</br>
+</br>
+
+<h4 class="xen-color">Level 3 - Payoff all credit cards</h4>
+  <% if @user_credit_card_debts.present?%>
+    <h5> Here is the order the credit card will be paid off, smallest to largest.</h5>
+    <% sorted_credit_card_debts.each do |debt| %>
+      <ul>
+        <li><%= debt.card_name %> with balance off <%= debt.balance %>.</li>
+      </ul>
+    <% end %>
+  <% else %>
+    <h5>You have no credit card debts. YAAAY! We move on to next level.</h5>
+  <% end %>
 
 </br>
 
-<% if @user_credit_card_debts.present?%>
-  <h4 class="xen-color">Level 3 - Payoff all credit cards</h4>
-  <h5> Here is the order the credit card will be paid off, smallest to largest.</h5>
-  <% sorted_credit_card_debts.each do |debt| %>
-    <ul>
-      <li><%= debt.card_name %> with balance off <%= debt.balance %>.</li>
-    </ul>
+<h4 class="xen-color">Level 4 - Payoff all consumer debts</h4>
+  <% if @user_consumer_debts.present?%>
+    <h5> Here is the order the consumer debts will be paid off, smallest to largest.</h5>
+    <% sorted_consumer_debts.each do |debt| %>
+      <ul>
+        <li><%= debt.name %> with balance off <%= debt.balance %>.</li>
+      </ul>
+    <% end %>
+  <% else %>
+    <h5>You have no consumer debts. YAAAY! We move on to next level.</h5>
   <% end %>
-<% else %>
-  <h4 class="xen-color">Level 3 - Payoff all credit cards</h4>
-  <h5>You have no credit card debts. YAAAY! We move on to next level.</h5>
-<% end %>
-
-</br>
-
-<% if @user_consumer_debts.present?%>
-  <h4 class="xen-color">Level 4 - Payoff all consumer debts</h4>
-  <h5> Here is the order the consumer debts will be paid off, smallest to largest.</h5>
-  <% sorted_consumer_debts.each do |debt| %>
-    <ul>
-      <li><%= debt.name %> with balance off <%= debt.balance %>.</li>
-    </ul>
-  <% end %>
-<% else %>
-  <h4 class="xen-color">Level 4 - Payoff all consumer debts</h4>
-  <h5>You have no consumer debts. YAAAY! We move on to next level.</h5>
-<% end %>
 
 </br>
 
