@@ -5,33 +5,8 @@
       No BS personal finance.  Our service makes achieving your financial independence automatic and headache free.
     </p>
     <%= link_to "LETS DO THIS!!!", new_question_path, class: 'button' %>
-</div>
-</div>
-
-
-
-
-<h3>Where Do I Begin?</h3>
-
-<div class="well">
-  <div style="overflow: hidden;">
-    <ul class="list-group list-group-flush form-group">
-      <div class="form-group col-md-12">
-        <li class="list-group-item">First - you should answer the initial questions. <%= link_to "Click here", new_question_path, class: 'button-link' %></li>
-      </div>
-      <div class="form-group col-md-12">
-        <li class="list-group-item">Second - you should enter information of all the credit card debts you carry. <%= link_to "Click here", new_credit_card_debt_path, class: 'button-link' %></li>
-      </div>
-      <div class="form-group col-md-12">
-        <li class="list-group-item">Lastly - you should enter informatino of all other consumer debts you carry. <%= link_to "Click here", new_consumer_debt_path, class: 'button-link' %></li>
-      </div>
-      <div class="form-group col-md-12">
-        <li class="list-group-item">We will take care of the rest from there.</li>
-      </div>
-    </ul>
   </div>
 </div>
-</br>
 
 <h3>xenDOLLAR Levels</h3>
 
@@ -39,27 +14,97 @@
   <div style="overflow: hidden;">
     <ul class="list-group list-group-flush form-group">
       <div class="form-group col-md-12">
-        <li class="list-group-item">1. On every payday 10% of your paycheck is transferred from your checking account and gets stashed. When it reaches $2000 it plugs into the rest of the steps. The saving percentage (10% initially) increases by a percentage point every six months. </li>
+        <li class="list-group-item">
+          1. <strong>Stash Account</strong> - On every payday 10% of your paycheck is transferred from your 
+          checking account and gets stashed. When it reaches $1,000 it plugs into the rest 
+          of the steps. The initial 10% saving increases by a percentage point every six months. 
+        </li>
       </div>
       <div class="form-group col-md-12">
-        <li class="list-group-item">2. Leave $1000 for small emergency fund. Puts the rest into level 3. For rest of the level as soon as the stash reaches $2000 it will leave $1000 in the small emergency fund and take the rest and plugs into the level. </li>
+        <li class="list-group-item">
+          2. <strong>Small Emergency Account</strong> - As soon as the stash account reaches $1,000 the money 
+          get transferred to Small Emergency account and the stash account resets to $0. 
+        </li>
       </div>
       <div class="form-group col-md-12">
-        <li class="list-group-item">3. Pay off credit card debts aggressively. (Smallest to largest)</li>
+        <li class="list-group-item">
+          3. <strong>Credit Card Debts</strong> - As soon as the stash account reaches $1,000 it will start 
+          paying off credit card debts smallest to largest and stash account resets to $0. 
+          This will be repeated until all the credit cards are paid off. 
+        </li>
       </div>
       <div class="form-group col-md-12">
-        <li class="list-group-item">4. Pay off other consumer debts (car payments, student loans, medical payments). (Smallest to largest)</li>
+         <li class="list-group-item">
+          4. <strong>Consumer Debts</strong> (car payments, student loans, medical payments) - As soon as 
+          the stash account reaches $1,000 it will start paying off consumer 
+          debts smallest to largest and stash account resets to $0. This will be repeated 
+          until all the consumer debts are paid off. 
+        </li>
       </div>
       <div class="form-group col-md-12">
-        <li class="list-group-item">5. Create $15,000 of big emergency fund. For this level as soon as the stash reaches $2000 it will leave $1000 and transfer the rest to user’s savings account until it reaches $15000.</li>
+        <li class="list-group-item">
+          5. <strong>Big Emergency Account</strong> -  As soon as the stash account reaches $1,000 the 
+          money get transferred to the user’s savings account and the stash account 
+          resets to $0.  This will be repeated until the user’s savings account reaches $15,000. 
+        </li>
       </div>
       <div class="form-group col-md-12">
-        <li class="list-group-item">6. Put into roth ira then regular ira. If the amount exceeds the max roth ira it puts the rest of the money into traditional ira. For this level everytime the stash reaches $1000 it will transfer half into roth ira and other investments and half into mortgage principal.</li>
+        <li class="list-group-item">
+          6. <strong>Retirement Account</strong> - As soon as the stash account reaches $1,000:
+            <ul style="list-style-type:square">
+              <li>
+                Half the money get transferred to the Vanguard Roth IRA account 
+                we set up for the user. Funds will be evenly distributed to 4 low cost ETF’s. 
+                If the amount exceeds the max Roth IRA it puts the rest of the money into 
+                Traditional IRA. 
+              </li>
+              <li>
+                Half the money is used to pay off the mortgage principal. 
+              </li>
+            </ul>
+        </li>
       </div>
       <div class="form-group col-md-12">
-        <li class="list-group-item">7. Start paying off mortgage aggressively.</li>
+        <li class="list-group-item">
+          7. <strong>Mortgage Account</strong> - Levels 6 and 7 are done simultaneously. 
+        </li>
       </div>
     </ul>
     <%= link_to "LETS DO THIS!!!", new_question_path, class: 'button right' %>
   </div>
 </div>
+
+</br>
+
+<h3>Where Do I Begin?</h3>
+
+<div class="well">
+  <div style="overflow: hidden;">
+    <ul class="list-group list-group-flush form-group">
+      <div class="form-group col-md-12">
+        <li class="list-group-item">
+          <strong>First</strong> - you should answer the initial questions. 
+          <%= link_to "Click here", new_question_path, class: 'button-link' %>
+        </li>
+      </div>
+      <div class="form-group col-md-12">
+        <li class="list-group-item">
+          <strong>Second</strong> - you should enter information of all the credit card debts you carry. 
+          <%= link_to "Click here", new_credit_card_debt_path, class: 'button-link' %>
+          </li>
+      </div>
+      <div class="form-group col-md-12">
+        <li class="list-group-item">
+          <strong>Third</strong> - you should enter informatino of all other consumer debts you carry. 
+          <%= link_to "Click here", new_consumer_debt_path, class: 'button-link' %>
+        </li>
+      </div>
+      <div class="form-group col-md-12">
+        <li class="list-group-item">
+          We will take care of the rest from there.
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>
+</br>
