@@ -23,14 +23,9 @@ $navbar-default-bg: black;
 
 .jumbotron {
   background-image: asset-url('header1.jpg');
-  background-size: cover;
   height: 570px;
   width: 1100px;
-}
-
-.contentzz {
-  max-width: 700px;
-  margin: auto;
+  background-size: cover;
 }
 
 .cta {
