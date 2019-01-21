@@ -1,4 +1,9 @@
-<h3>My Status - Level <%= current_level %></h3>
+<h3>My Status - Level <%= current_level[:current_level] %></h3>
+
+<h3>for debugging - <%= current_level %></h3>
+</br>
+
+
 <p>Your stack account is at $<%= @user_stack_accounts.balance %>.</p>
 <p>Your stack small emergency is at $<%= @user_small_emergency.balance %>.</p>
 <p>Your stack big emergency is at $<%= @user_big_emergency.balance %>.</p>
@@ -9,7 +14,7 @@
 
 <h4 class="xen-color">Level 1 - Stack account</h4>
   <% if @user_stack_accounts.present? %>
-    <p>Your stack account is at $<%= @user_stack_accounts.balance %> . That means we have $<%= stack_account_remaining %> left to go until we reach $2,000.</p>
+    <p>Your stack account is at $<%= @user_stack_accounts.balance %> . That means we have $<%= stack_account_remaining %> left to go until we reach $1,000.</p>
   <% end %>
 </br>
 

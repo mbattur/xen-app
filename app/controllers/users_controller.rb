@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def stack_account_remaining
-    remaining = 2000 - @user_stack_accounts.balance
+    remaining = 1000 - @user_stack_accounts.balance
     remaining
   end
 
@@ -32,23 +32,47 @@ class UsersController < ApplicationController
     small_em = @user_small_emergency.balance
     big_em = @user_big_emergency.balance
     retire = @user_retirement_account.balance
+    stack = @user_stack_accounts.balance
 
-    if small_em > 1000 && big_em > 15000  && !has_card_debt && !has_consumer_debt && retire > 0
-      level = 7
-    elsif small_em > 1000 && big_em > 15000  && !has_card_debt && !has_consumer_debt
-      level = 6
-    elsif small_em > 1000 && big_em <= 15000 && !has_card_debt && !has_consumer_debt
-      level = 5
-    elsif small_em > 1000 && !has_card_debt && has_consumer_debt
-      level = 4
-    elsif small_em > 1000 && has_card_debt
-      level = 3
-    elsif small_em > 0
-      level = 2
+    current_small_em = 0
+    current_stack = 0
+    current_level = 0
+
+    if stack >= 1000 && small_em == 0
+      {
+        current_small_em: 1000,
+        current_stack: stack - 1000,
+        current_level: 2
+      }
+    elsif current_stack >= 1000 && current_small_em == 1000 && has_card_debt
+      {
+        #pay off smallest credit card/s using the 1000
+        current_stack: stack - 1000,
+        current_level: 3
+      }
     else
-      level = 1
+      {
+        current_level: 1
+      }
     end
 
+    # if small_em > 1000 && big_em > 15000  && !has_card_debt && !has_consumer_debt && retire > 0
+    #   level = 7
+    # elsif small_em > 1000 && big_em > 15000  && !has_card_debt && !has_consumer_debt
+    #   level = 6
+    # elsif small_em > 1000 && big_em <= 15000 && !has_card_debt && !has_consumer_debt
+    #   level = 5
+    # elsif small_em > 1000 && !has_card_debt && has_consumer_debt
+    #   level = 4
+    # elsif small_em > 1000 && has_card_debt
+    #   level = 3
+    # elsif small_em == 0 && stack >= 1000
+    #   level = 2
+    #   small_em = 1000
+    #   stack -= 1000
+    # else
+    #   level = 1
+    # end
   end
 
   def cash_on_hand
