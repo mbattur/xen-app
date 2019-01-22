@@ -29,31 +29,34 @@ class UsersController < ApplicationController
   def current_level
     has_card_debt = @user_credit_card_debts.present?
     has_consumer_debt = @user_consumer_debts.present?
-    small_em = @user_small_emergency.balance
+    small_em = @user_small_emergency
     big_em = @user_big_emergency.balance
     retire = @user_retirement_account.balance
-    stack = @user_stack_accounts.balance
+    stack = @user_stack_accounts
 
     current_small_em = 0
     current_stack = 0
     current_level = 0
 
-    if stack >= 1000 && small_em == 0
-      {
-        current_small_em: 1000,
-        current_stack: stack - 1000,
-        current_level: 2
-      }
-    elsif current_stack >= 1000 && current_small_em == 1000 && has_card_debt
-      {
-        #pay off smallest credit card/s using the 1000
-        current_stack: stack - 1000,
-        current_level: 3
-      }
+    if stack.balance <= 999.99 && small_em.balance == 0
+      current_level = 1
+    elsif stack.balance >= 1000 && small_em.balance == 0
+      small_em.balance = 1000
+      small_em.save!
+      stack.balance = stack.balance - 1000
+      stack.save!
+      current_level = 2
+    elsif stack.balance < 1000 && small_em.balance == 1000
+      current_level = 2
+      if stack.balance >= 1000 && small_em.balance == 1000 && has_card_debt
+        stack.balance = stack.balance - 1000
+        stack.save!
+        current_level = 3.1
+      else
+        current_level = 3
+      end
     else
-      {
-        current_level: 1
-      }
+      current_level = 999
     end
 
     # if small_em > 1000 && big_em > 15000  && !has_card_debt && !has_consumer_debt && retire > 0
