@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @user_big_emergency = current_user.big_emergency
     @user_retirement_account = current_user.retirement_account
     @user_mortgage_account = current_user.mortgage_account
+    @user_level = current_user.user_level
     @user = current_user
   end
 
@@ -33,25 +34,25 @@ class UsersController < ApplicationController
     big_em = @user_big_emergency.balance
     retire = @user_retirement_account.balance
     stack = @user_stack_accounts
+    level = @user_level
 
-    current_level = 0
-
-    if stack.balance <= 999.99 && small_em.balance == 0
-      current_level = 1
-    elsif stack.balance >= 1000 && small_em.balance == 0
-      small_em.balance = 1000
-      small_em.save!
-      stack.balance = stack.balance - 1000
-      stack.save!
-      current_level = 2
-    elsif stack.balance < 1000 && small_em.balance == 1000
-      current_level = 2
-    elsif stack.balance >= 1000 && small_em.balance == 1000 && has_card_debt && current_level == 2
-      stack.balance = stack.balance - 1000
-      stack.save!
-      current_level = 3
+    if stack.balance >= 1 && small_em.balance == 0
+      level.level = 1
+      level.save!
+    # elsif stack.balance >= 1000 && small_em.balance == 0
+    #   small_em.balance = 1000
+    #   small_em.save!
+    #   stack.balance = stack.balance - 1000
+    #   stack.save!
+    #   level = 2
+    # elsif stack.balance < 1000 && small_em.balance == 1000
+    #   level = 2
+    # elsif stack.balance >= 1000 && small_em.balance == 1000 && has_card_debt && level == 2
+    #   stack.balance = stack.balance - 1000
+    #   stack.save!
+    #   level = 3
     else
-      current_level = 999
+      level = 999
     end
 
     # if small_em > 1000 && big_em > 15000  && !has_card_debt && !has_consumer_debt && retire > 0

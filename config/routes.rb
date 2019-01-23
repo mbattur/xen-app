@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_levels
   resources :mortgage_accounts
   resources :retirement_accounts
   resources :big_emergencies

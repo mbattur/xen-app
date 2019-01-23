@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_03_135424) do
+ActiveRecord::Schema.define(version: 2019_01_23_140353) do
 
   create_table "big_emergencies", force: :cascade do |t|
     t.float "balance"
@@ -99,6 +99,13 @@ ActiveRecord::Schema.define(version: 2019_01_03_135424) do
 
   create_table "stack_accounts", force: :cascade do |t|
     t.float "balance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+  end
+
+  create_table "user_levels", force: :cascade do |t|
+    t.integer "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"

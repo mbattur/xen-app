@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one :big_emergency, dependent: :destroy
   has_one :retirement_account, dependent: :destroy
   has_one :mortgage_account, dependent: :destroy
+  has_one :user_level, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
