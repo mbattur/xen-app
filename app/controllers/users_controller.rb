@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user_mortgage_account = current_user.mortgage_account
     @user = current_user
   end
-  
+
   def my_portfolio
     @user_credit_card_debts = current_user.credit_card_debts
     @user_consumer_debts = current_user.consumer_debts
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def stack_account_remaining
     remaining = 1000 - @user_stack_accounts.balance
-    remaining
+    remaining.round(2)
   end
 
   def current_level
@@ -34,8 +34,6 @@ class UsersController < ApplicationController
     retire = @user_retirement_account.balance
     stack = @user_stack_accounts
 
-    current_small_em = 0
-    current_stack = 0
     current_level = 0
 
     if stack.balance <= 999.99 && small_em.balance == 0
@@ -48,13 +46,10 @@ class UsersController < ApplicationController
       current_level = 2
     elsif stack.balance < 1000 && small_em.balance == 1000
       current_level = 2
-      if stack.balance >= 1000 && small_em.balance == 1000 && has_card_debt
-        stack.balance = stack.balance - 1000
-        stack.save!
-        current_level = 3.1
-      else
-        current_level = 3
-      end
+    elsif stack.balance >= 1000 && small_em.balance == 1000 && has_card_debt && current_level == 2
+      stack.balance = stack.balance - 1000
+      stack.save!
+      current_level = 3
     else
       current_level = 999
     end
