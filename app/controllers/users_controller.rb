@@ -36,42 +36,48 @@ class UsersController < ApplicationController
     stack = @user_stack_accounts
     level = @user_level
 
-    if stack.balance >= 1 && small_em.balance == 0
+    if stack.balance == 0 && small_em.balance == 0
+      level.level = 0
+      level.save!
+    elsif stack.balance <= 999 && small_em.balance == 0
       level.level = 1
       level.save!
-    # elsif stack.balance >= 1000 && small_em.balance == 0
-    #   small_em.balance = 1000
-    #   small_em.save!
-    #   stack.balance = stack.balance - 1000
-    #   stack.save!
-    #   level = 2
-    # elsif stack.balance < 1000 && small_em.balance == 1000
-    #   level = 2
-    # elsif stack.balance >= 1000 && small_em.balance == 1000 && has_card_debt && level == 2
-    #   stack.balance = stack.balance - 1000
-    #   stack.save!
-    #   level = 3
-    else
-      level = 999
+    elsif level.level == 1 && stack.balance >= 1000 && small_em.balance == 0
+      small_em.balance = 1000
+      small_em.save!
+      stack.balance = stack.balance - 1000
+      stack.save!
+      level.level = 2
+      level.save!
+    elsif stack.balance >= 1000 && small_em.balance == 1000 && has_card_debt
+      #pay smallest credit card
+      stack.balance = stack.balance - 1000
+      stack.save!
+      level.level = 3
+      level.save!
+    elsif stack.balance >= 1000 && small_em.balance == 1000 && !has_card_debt && has_consumer_debt
+      #pay smallest consumer debt
+      stack.balance = stack.balance - 1000
+      stack.save!
+      level.level = 4
+      level.save!
+    elsif stack.balance >= 1000 && small_em.balance == 1000 && !has_card_debt && !has_consumer_debt && big_em < 15000
+      #transfer stack account to user's savings account until it reaches $15,000
+      stack.balance = stack.balance - 1000
+      stack.save!
+      level.level = 5
+      level.save!
+    # else stack.balance >= 1000 && small_em.balance == 1000 && !has_card_debt && !has_consumer_debt && big_em >= 15000
+    #   #transfer to etf and pay mortgage
+    #   if stack.balance > 0
+    #     stack.balance = stack.balance - 1000
+    #     stack.save!
+    #   end
+    #   level.level = 7
+    #   level.save!
     end
 
-    # if small_em > 1000 && big_em > 15000  && !has_card_debt && !has_consumer_debt && retire > 0
-    #   level = 7
-    # elsif small_em > 1000 && big_em > 15000  && !has_card_debt && !has_consumer_debt
-    #   level = 6
-    # elsif small_em > 1000 && big_em <= 15000 && !has_card_debt && !has_consumer_debt
-    #   level = 5
-    # elsif small_em > 1000 && !has_card_debt && has_consumer_debt
-    #   level = 4
-    # elsif small_em > 1000 && has_card_debt
-    #   level = 3
-    # elsif small_em == 0 && stack >= 1000
-    #   level = 2
-    #   small_em = 1000
-    #   stack -= 1000
-    # else
-    #   level = 1
-    # end
+    level.level
   end
 
   def cash_on_hand
