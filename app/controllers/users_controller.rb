@@ -50,13 +50,15 @@ class UsersController < ApplicationController
       level.level = 2
       level.save!
     elsif stack.balance >= 1000 && small_em.balance == 1000 && has_card_debt
-      #pay smallest credit card
+      #pay smallest credit 
+      #subtract 1000 from smallest credit card debt/s
       stack.balance = stack.balance - 1000
       stack.save!
       level.level = 3
       level.save!
     elsif stack.balance >= 1000 && small_em.balance == 1000 && !has_card_debt && has_consumer_debt
       #pay smallest consumer debt
+      #subtract 1000 from smallest consumer debt/s
       stack.balance = stack.balance - 1000
       stack.save!
       level.level = 4
@@ -67,14 +69,12 @@ class UsersController < ApplicationController
       stack.save!
       level.level = 5
       level.save!
-    # else stack.balance >= 1000 && small_em.balance == 1000 && !has_card_debt && !has_consumer_debt && big_em >= 15000
+    elsif stack.balance >= 1000 && small_em.balance == 1000 && !has_card_debt && !has_consumer_debt && big_em = 15000
     #   #transfer to etf and pay mortgage
-    #   if stack.balance > 0
-    #     stack.balance = stack.balance - 1000
-    #     stack.save!
-    #   end
-    #   level.level = 7
-    #   level.save!
+      stack.balance = stack.balance - 1000
+      stack.save!
+      level.level = 7
+      level.save!
     end
 
     level.level

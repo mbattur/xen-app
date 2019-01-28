@@ -4,10 +4,22 @@
 <p>debuggin <%= current_level %>.</p>
 <p>Your current level is at <%= @user_level.level %>.</p>
 <p>Your stack account is at $<%= @user_stack_accounts.balance %>.</p>
-<p>Your stack small emergency is at $<%= @user_small_emergency.balance %>.</p>
-<p>Your stack big emergency is at $<%= @user_big_emergency.balance %>.</p>
-<p>Your stack retirement account is at $<%= @user_retirement_account.balance %>.</p>
-<p>Your stack mortgage account is at $<%= @user_mortgage_account.balance %>.</p>
+<p>Your small emergency is at $<%= @user_small_emergency.balance %>.</p>
+
+ <p>Your credit card balance is at $
+<% @user_credit_card_debts.each do |card| %>
+  <%= card.balance %>.</p>
+<% end %>
+
+<p>Your consumer debt balance is at $
+<% @user_consumer_debts.each do |debt| %>
+  <%= debt.balance %>.</p>
+<% end %>
+
+</br>
+<p>Your big emergency is at $<%= @user_big_emergency.balance %>.</p>
+<p>Your retirement account is at $<%= @user_retirement_account.balance %>.</p>
+<p>Your mortgage account is at $<%= @user_mortgage_account.balance %>.</p>
 </br>
 </br>
 
