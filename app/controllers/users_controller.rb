@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   helper_method :cash_on_hand, :sorted_consumer_debts, :sorted_credit_card_debts,
-                :smallest_balance, :largest_balance, :current_level, :stack_account_remaining, :pay_credit_card
+                :smallest_balance, :largest_balance, :current_level, :stack_account_remaining,
+                :pay_credit_card
 
   def levels
     @user_credit_card_debts = current_user.credit_card_debts
@@ -38,7 +39,8 @@ class UsersController < ApplicationController
     balance_array.each do |card|
       if card.balance <= 1000
         #pay the one card with the lowest balance
-        @user_stack_accounts.balance = 1000 - card.balance
+        remaining_stack = @user_stack_accounts.balance 
+        remaining_stack = 1000 - card.balance
         card.balance = 0
         card.save!
       end
@@ -70,8 +72,8 @@ class UsersController < ApplicationController
       #pay smallest credit
       pay_credit_card
       #subtract 1000 from smallest credit card debt/s
-      stack.balance = stack.balance - 1000
-      stack.save!
+      # stack.balance = stack.balance - 1000
+      # stack.save!
       level.level = 3
       level.save!
     elsif stack.balance >= 1000 && small_em.balance == 1000 && !has_card_debt && has_consumer_debt
