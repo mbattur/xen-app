@@ -1,5 +1,9 @@
 <h3>My Status - Level <%= @user_level.level %></h3>
 
+<%# <%= pay_credit_card.each do |c| %> %>
+  <%# <%= c.balance %> %>
+<%# <% end %> %>
+
 
 <p>debuggin <%= current_level %>.</p>
 <p>Your current level is at <%= @user_level.level %>.</p>
@@ -41,7 +45,7 @@
 
 <h4 class="xen-color">Level 3 - Payoff all credit cards</h4>
   <% if @user_credit_card_debts.present?%>
-    <h5> Here is the order the credit card will be paid off, smallest to largest.</h5>
+    <h5> Here is the order credit cards will be paid off, smallest to largest.</h5>
     <% sorted_credit_card_debts.each do |debt| %>
       <ul>
         <li><%= debt.card_name %> with balance off <%= debt.balance %>.</li>
@@ -55,7 +59,7 @@
 
 <h4 class="xen-color">Level 4 - Payoff all consumer debts</h4>
   <% if @user_consumer_debts.present?%>
-    <h5> Here is the order the consumer debts will be paid off, smallest to largest.</h5>
+    <h5> Here is the order consumer debts will be paid off, smallest to largest.</h5>
     <% sorted_consumer_debts.each do |debt| %>
       <ul>
         <li><%= debt.name %> with balance off <%= debt.balance %>.</li>
