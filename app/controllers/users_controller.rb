@@ -1,3 +1,6 @@
+require 'pry'
+
+
 class UsersController < ApplicationController
   helper_method :cash_on_hand, :sorted_consumer_debts, :sorted_credit_card_debts,
                 :smallest_balance, :largest_balance, :current_level, :stack_account_remaining,
@@ -37,6 +40,7 @@ class UsersController < ApplicationController
     balance_array.sort_by &:balance
 
     balance_array.each do |card|
+      # binding.pry
       if card.balance <= 1000
         #pay the one card with the lowest balance
         remaining_stack = @user_stack_accounts
