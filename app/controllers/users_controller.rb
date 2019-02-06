@@ -39,8 +39,9 @@ class UsersController < ApplicationController
     balance_array.each do |card|
       if card.balance <= 1000
         #pay the one card with the lowest balance
-        remaining_stack = @user_stack_accounts.balance 
-        remaining_stack = 1000 - card.balance
+        remaining_stack = @user_stack_accounts
+        remaining_stack.balance = remaining_stack.balance - card.balance
+        remaining_stack.save!
         card.balance = 0
         card.save!
       end
