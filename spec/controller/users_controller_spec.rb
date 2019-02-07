@@ -7,5 +7,5 @@ RSpec.describe UsersController, type: :controller do
       puts JSON.pretty_generate(resp)
       expect(resp).not_to be_nil
     end
-  end 
+  end
 end

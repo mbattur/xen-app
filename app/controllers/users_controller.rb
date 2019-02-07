@@ -34,6 +34,8 @@ class UsersController < ApplicationController
   def pay_credit_card
     balance_array = []
 
+#     @user_stack_accounts = current_user.stack_account
+# puts "::::::::::#{@user_stack_accounts}"
     @user_credit_card_debts.all.each do |debt|
       balance_array.push(debt)
     end
