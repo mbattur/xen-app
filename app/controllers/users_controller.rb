@@ -53,6 +53,12 @@ class UsersController < ApplicationController
         remaining_stack.balance = remaining_stack.balance - card.balance
         remaining_stack.save!
         card.destroy
+      else card.balance > 1000
+        remaining_stack = @user_stack_accounts
+        card.balance = card.balance - remaining_stack.balance
+        card.save!
+        remaining_stack.balance = remaining_stack.balance - card.balance
+        remaining_stack.save!
       end
     end
   end
