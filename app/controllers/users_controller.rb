@@ -7,10 +7,10 @@ class UsersController < ApplicationController
                 :smallest_balance, :largest_balance, :current_level, :stack_account_remaining,
                 :pay_credit_card
 
-  def setup
-    @request.env["devise.mapping"] = Devise.mappings[wusser]
-    sign_in FactoryBot.create(user)
-  end
+  # def setup
+  #   @request.env["devise.mapping"] = Devise.mappings[wusser]
+  #   sign_in FactoryBot.create(user)
+  # end
 
   def levels
     @user_credit_card_debts = current_user.credit_card_debts
@@ -41,21 +41,18 @@ class UsersController < ApplicationController
     balance_array = []
 
     @user_stack_accounts = current_user.stack_account
-puts "::::::::::#{@user_stack_accounts}"
     @user_credit_card_debts.all.each do |debt|
       balance_array.push(debt)
     end
     balance_array.sort_by &:balance
 
     balance_array.each do |card|
-      # binding.pry
       if card.balance <= 1000
         #pay the one card with the lowest balance
         remaining_stack = @user_stack_accounts
         remaining_stack.balance = remaining_stack.balance - card.balance
         remaining_stack.save!
-        card.balance = 0
-        card.save!
+        card.destroy
       end
     end
   end
