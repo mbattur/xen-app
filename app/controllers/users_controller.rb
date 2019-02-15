@@ -55,10 +55,19 @@ class UsersController < ApplicationController
         card.destroy
       else card.balance > 1000
         remaining_stack = @user_stack_accounts
-        card.balance = card.balance - remaining_stack.balance
-        card.save!
-        remaining_stack.balance = remaining_stack.balance - card.balance
-        remaining_stack.save!
+        if remaining_stack.balance >= card.balance
+          remaining_stack2 = @user_stack_accounts
+          remaining_stack2.balance = remaining_stack2.balance - card.balance
+          remaining_stack2.save!
+          card.destroy
+          break
+        else
+          card.balance = card.balance - remaining_stack.balance
+          card.save!
+          remaining_stack2 = @user_stack_accounts
+          remaining_stack2.balance = 0
+          remaining_stack2.save!
+        end
       end
     end
   end
