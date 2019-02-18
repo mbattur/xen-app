@@ -60,7 +60,6 @@ class UsersController < ApplicationController
           remaining_stack2.balance = remaining_stack2.balance - card.balance
           remaining_stack2.save!
           card.destroy
-          break
         else
           card.balance = card.balance - remaining_stack.balance
           card.save!
