@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   context '#pay_credit_card' do
-    def setup
-      sign_in FactoryBot.create(:user)
-    end
+    # def setup
+    #   sign_in FactoryBot.create(:user)
+    # end
 
     it 'pays credit cards' do
       sign_in user

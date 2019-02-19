@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   helper_method :cash_on_hand, :sorted_consumer_debts, :sorted_credit_card_debts,
                 :smallest_balance, :largest_balance, :current_level, :stack_account_remaining,
-                :pay_credit_card
+                :pay_smallest_cards
 
   # def setup
   #   @request.env["devise.mapping"] = Devise.mappings[wusser]
@@ -37,7 +37,31 @@ class UsersController < ApplicationController
     remaining.round(2)
   end
 
-  def pay_credit_card
+  def pay_each_card(card)
+    if card.balance <= 1000
+      #pay the one card with the lowest balance
+      remaining_stack = @user_stack_accounts
+      remaining_stack.balance = remaining_stack.balance - card.balance
+      remaining_stack.save!
+      card.destroy
+    else card.balance > 1000
+      remaining_stack = @user_stack_accounts
+      if remaining_stack.balance >= card.balance
+        remaining_stack2 = @user_stack_accounts
+        remaining_stack2.balance = remaining_stack2.balance - card.balance
+        remaining_stack2.save!
+        card.destroy
+      else
+        card.balance = card.balance - remaining_stack.balance
+        card.save!
+        remaining_stack2 = @user_stack_accounts
+        remaining_stack2.balance = 0
+        remaining_stack2.save!
+      end
+    end
+  end
+
+  def pay_smallest_cards
     balance_array = []
 
     @user_stack_accounts = current_user.stack_account
@@ -47,27 +71,7 @@ class UsersController < ApplicationController
     balance_array.sort_by &:balance
 
     balance_array.each do |card|
-      if card.balance <= 1000
-        #pay the one card with the lowest balance
-        remaining_stack = @user_stack_accounts
-        remaining_stack.balance = remaining_stack.balance - card.balance
-        remaining_stack.save!
-        card.destroy
-      else card.balance > 1000
-        remaining_stack = @user_stack_accounts
-        if remaining_stack.balance >= card.balance
-          remaining_stack2 = @user_stack_accounts
-          remaining_stack2.balance = remaining_stack2.balance - card.balance
-          remaining_stack2.save!
-          card.destroy
-        else
-          card.balance = card.balance - remaining_stack.balance
-          card.save!
-          remaining_stack2 = @user_stack_accounts
-          remaining_stack2.balance = 0
-          remaining_stack2.save!
-        end
-      end
+      pay_each_card(card)
     end
   end
 
@@ -94,7 +98,7 @@ class UsersController < ApplicationController
       level.save!
     elsif stack.balance >= 1000 && small_em.balance == 1000 && has_card_debt
       #pay smallest credit
-      pay_credit_card
+      pay_smallest_cards
       #subtract 1000 from smallest credit card debt/s
       # stack.balance = stack.balance - 1000
       # stack.save!
