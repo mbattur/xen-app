@@ -1,16 +1,16 @@
 require 'pry'
 
 class UsersController < ApplicationController
-  # include Devise::Test::ControllerHelpers
+  include Devise::Test::ControllerHelpers
 
   helper_method :cash_on_hand, :sorted_consumer_debts, :sorted_credit_card_debts,
                 :smallest_balance, :largest_balance, :current_level, :stack_account_remaining,
                 :pay_smallest_cards
 
-  # def setup
-  #   @request.env["devise.mapping"] = Devise.mappings[wusser]
-  #   sign_in FactoryBot.create(user)
-  # end
+  def setup
+    @request.env["devise.mapping"] = Devise.mappings[:admin]
+    sign_in FactoryBot.create(:admin)
+  end
 
   def levels
     @user_credit_card_debts = current_user.credit_card_debts
