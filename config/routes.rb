@@ -9,6 +9,15 @@ Rails.application.routes.draw do
   resources :credit_card_debts
   devise_for :users
   root 'welcome#home'
+
+  # resources :users, only: [:create, :show, :update] do
+  #   resources :consumer_debts, only: [:index] do
+
+  #   end
+  #   resources :credit_cards, only: [:index, :show, :create, :update] do
+  #     get 'pay', to: 'credit_cards#pay'
+  #   end
+  # end
   get 'consumer_debts', to: 'users#consumer_debts'
   get 'credit_card_debts', to: 'credit_card_debts#index'
   get 'initial_questions', to: 'users#initial_questions'

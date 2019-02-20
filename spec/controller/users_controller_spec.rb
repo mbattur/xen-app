@@ -2,13 +2,14 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   context '#pay_credit_card' do
-    # def setup
-    #   sign_in FactoryBot.create(:user)
-    # end
+    let(:user) { create(:user) }
 
     it 'pays credit cards' do
       sign_in user
-      resp = subject.pay_credit_card
+      # get :pay id: card.id
+
+      # expect(response.status).to be(:success)
+      resp = subject.stack_account_remaining
       puts JSON.pretty_generate(resp)
       expect(resp).not_to be_nil
     end

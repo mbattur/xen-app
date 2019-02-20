@@ -1,32 +1,32 @@
-<h3>My Status - Level <%= @user_level.level %></h3>
+<h3>My Status - Level <%= current_level %></h3>
 
 <p>Your current level is at <%= current_level %>.</p>
-<p>Your stack account is at $<%= @user_stack_accounts.balance %>.</p>
-<p>Your small emergency is at $<%= @user_small_emergency.balance %>.</p>
+<p>Your stack account is at $<%= current_user.stack_account.balance %>.</p>
+<p>Your small emergency is at $<%= current_user.small_emergency.balance %>.</p>
 
  <p>Your credit card balance is at $
-<% @user_credit_card_debts.each do |card| %>
+<% current_user.credit_card_debts.each do |card| %>
   <%= card.balance %>.</p>
 <% end %>
 
 <p>Your consumer debt balance is at $
-<% @user_consumer_debts.each do |debt| %>
+<% current_user.consumer_debts.each do |debt| %>
   <%= debt.balance %>.</p>
 <% end %>
 
-<p>Your big emergency is at $<%= @user_big_emergency.balance %>.</p>
+<p>Your big emergency is at $<%= current_user.big_emergency.balance %>.</p>
 </br>
 </br>
 
 <h4 class="xen-color">Level 1 - Stack account</h4>
-  <% if @user_stack_accounts.present? %>
-    <p>Your stack account is at $<%= @user_stack_accounts.balance %> . That means we have $<%= stack_account_remaining %> left to go until we reach $1,000.</p>
+  <% if current_user.stack_account.present? %>
+    <p>Your stack account is at $<%= current_user.stack_account.balance %> . That means we have $<%= stack_account_remaining %> left to go until we reach $1,000.</p>
   <% end %>
 </br>
 
 <h4 class="xen-color">Level 2 - Small emergency fund of $1,000</h4>
-  <% if @user_small_emergency.balance >= 0 %>
-    <p>Your small emergency account currently has $<%= @user_small_emergency.balance %>.
+  <% if current_user.small_emergency.balance >= 0 %>
+    <p>Your small emergency account currently has $<%= current_user.small_emergency.balance %>.
   <% else %>
     <p>This is your next level.</p>
   <% end %>
@@ -35,7 +35,7 @@
 </br>
 
 <h4 class="xen-color">Level 3 - Payoff all credit cards</h4>
-  <% if @user_credit_card_debts.present?%>
+  <% if current_user.credit_card_debts.present?%>
     <h5> Here is the order credit cards will be paid off, smallest to largest.</h5>
     <% sorted_credit_card_debts.each do |debt| %>
       <ul>
@@ -49,7 +49,7 @@
 </br>
 
 <h4 class="xen-color">Level 4 - Payoff all consumer debts</h4>
-  <% if @user_consumer_debts.present?%>
+  <% if current_user.consumer_debts.present?%>
     <h5> Here is the order consumer debts will be paid off, smallest to largest.</h5>
     <% sorted_consumer_debts.each do |debt| %>
       <ul>
@@ -63,16 +63,16 @@
 </br>
 
 <h4 class="xen-color">Level 5 - Big emergency fund of $15,000</h4>
-  <% if @user_big_emergency.present? %>
-    <p>Your big emergency is at $<%= @user_big_emergency.balance %></p>
+  <% if current_user.big_emergency.present? %>
+    <p>Your big emergency is at $<%= current_user.big_emergency.balance %></p>
   <% else %>
     <p>We need to work on big emergency</p>
   <% end %>
 </br>
 
 <h4 class="xen-color">Level 6 - Retirement savings</h4>
-  <% if @user_retirement_account.present? %>
-    <p>Your retirement account is at $<%= @user_retirement_account.balance %></p>
+  <% if current_user.retirement_account.present? %>
+    <p>Your retirement account is at $<%= current_user.retirement_account.balance %></p>
   <% else %>
     <p>We need to work on retirement account</p>
   <% end %>
@@ -80,8 +80,8 @@
 </br>
 
 <h4 class="xen-color">Level 7 - Payoff mortgage early</h4>
-  <% if @user_mortgage_account.present? %>
-    <p>Your mortgage account is at $<%= @user_mortgage_account.balance %></p>
+  <% if current_user.mortgage_account.present? %>
+    <p>Your mortgage account is at $<%= current_user.mortgage_account.balance %></p>
   <% else %>
     <p>We need to work on mortgage account</p>
   <% end %>
