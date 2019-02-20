@@ -7,10 +7,10 @@ class UsersController < ApplicationController
                 :smallest_balance, :largest_balance, :current_level, :stack_account_remaining,
                 :pay_smallest_cards
 
-  def setup
-    @request.env["devise.mapping"] = Devise.mappings[:admin]
-    sign_in FactoryBot.create(:admin)
-  end
+  # def setup
+  #   @request.env["devise.mapping"] = Devise.mappings[:admin]
+  #   sign_in FactoryBot.create(:admin)
+  # end
 
   def levels
     @user_credit_card_debts = current_user.credit_card_debts
