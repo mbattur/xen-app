@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   context '#pay_credit_card' do
-    let(:user) { create(:user) }
+    let(:user) { create(:stack_account).user }
 
     it 'pays credit cards' do
       sign_in user
@@ -10,8 +10,7 @@ RSpec.describe UsersController, type: :controller do
 
       # expect(response.status).to be(:success)
       resp = subject.stack_account_remaining
-      puts JSON.pretty_generate(resp)
-      expect(resp).not_to be_nil
+      expect(resp).to eq(667.0)
     end
   end
 end
