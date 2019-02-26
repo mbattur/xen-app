@@ -54,6 +54,7 @@ class UsersController < ApplicationController
     balance_array = []
 
     # @user_stack_accounts = current_user.stack_account
+    # binding.pry
     current_user.credit_card_debts.each do |debt|
       balance_array.push(debt)
     end
