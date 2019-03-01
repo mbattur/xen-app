@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :stack_account do
     association :user
-    balance { '1222' }
+    balance { '1200' }
   end
 end
