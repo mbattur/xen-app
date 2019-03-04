@@ -22,7 +22,7 @@ RSpec.describe UsersController, type: :controller do
       {
         id: 1,
         card_name: 'capital one',
-        balance: 333.0
+        balance: 11.0
       }
     end
 
