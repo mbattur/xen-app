@@ -25,28 +25,28 @@ class UsersController < ApplicationController
   # end
 
   def pay_each_card(card)
-    user_stack_accounts = current_user.stack_account
+    stack_balance = 0
+    card_balance = 0
+    remaining_stack = current_user.stack_account
+
     if card.balance <= 1000
-      # pay the one card with the lowest balance
-      remaining_stack = user_stack_accounts
-      remaining_stack.balance = remaining_stack.balance - card.balance
-      remaining_stack.save!
+      stack_balance = remaining_stack.balance - card.balance
       card.destroy
-    # else card.balance > 1000
-    #   remaining_stack = user_stack_accounts
-    #   if remaining_stack.balance >= card.balance
-    #     remaining_stack2 = user_stack_accounts
-    #     remaining_stack2.balance = remaining_stack2.balance - card.balance
-    #     remaining_stack2.save!
-    #     card.destroy
-    #   else
-    #     card.balance = card.balance - remaining_stack.balance
-    #     card.save!
-    #     remaining_stack2 = user_stack_accounts
-    #     remaining_stack2.balance = 0
-    #     remaining_stack2.save!
-    #   end
+    else card.balance > 1000
+      if remaining_stack.balance >= card.balance
+        stack_balance = remaining_stack.balance - card.balance
+        card.destroy
+      else
+        card_balance = card.balance - remaining_stack.balance
+        stack_balance = 0
+      end
     end
+
+    remaining_stack.balance = stack_balance
+    remaining_stack.save!
+    card.balance = card_balance if card.present?
+    card.save!
+    card.balance
   end
 
   def pay_smallest_cards

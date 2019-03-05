@@ -18,17 +18,11 @@ RSpec.describe UsersController, type: :controller do
   describe '#pay_each_card' do
     let(:user) { create(:stack_account).user }
     let(:card) { create(:credit_card_debt) }
-    let(:expected) do
-      {
-        id: 1,
-        card_name: 'capital one',
-        balance: 11.0
-      }
-    end
+    let(:expected) { 150 }
 
     it 'zzz' do
       sign_in user
-      expect(subject.pay_each_card(card)).to include(expected)
+      expect(subject.pay_each_card(card)).to eq(expected)
     end
   end
 
