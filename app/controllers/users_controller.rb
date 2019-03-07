@@ -25,39 +25,36 @@ class UsersController < ApplicationController
   # end
 
   def pay_each_card(card)
-    stack_balance = 0
-    card_balance = 0
+    # stack_balance = 0
+    # card_balance = 0
     remaining_stack = current_user.stack_account
-
+binding.pry
     if card.balance <= 1000
       stack_balance = remaining_stack.balance - card.balance
-      card.destroy
-    else card.balance > 1000
-      if remaining_stack.balance >= card.balance
-        stack_balance = remaining_stack.balance - card.balance
-        card.destroy
-      else
-        card_balance = card.balance - remaining_stack.balance
-        stack_balance = 0
-      end
+      card.destroy!
+    # else card.balance > 1000
+    #   if remaining_stack.balance >= card.balance
+    #     stack_balance = remaining_stack.balance - card.balance
+    #     card.destroy
+    #   else
+    #     card_balance = card.balance - remaining_stack.balance
+    #     stack_balance = 0
+    #   end
+    #   card.balance = card_balance if card.present?
+    #   card.save!
     end
 
     remaining_stack.balance = stack_balance
     remaining_stack.save!
-    card.balance = card_balance if card.present?
-    card.save!
     card.balance
   end
 
   def pay_smallest_cards
     balance_array = []
-
-    # @user_stack_accounts = current_user.stack_account
     current_user.credit_card_debts.each do |debt|
       balance_array.push(debt)
     end
     balance_array.sort_by &:balance
-
     balance_array.each do |card|
       pay_each_card(card)
     end
