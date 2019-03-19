@@ -24,40 +24,19 @@ class UsersController < ApplicationController
   #   CreditCard.find(params[:id]).pay!
   # end
 
-  def pay_each_card(card)
-    # stack_balance = 0
-    # card_balance = 0
-    remaining_stack = current_user.stack_account
-binding.pry
-    if card.balance <= 1000
-      stack_balance = remaining_stack.balance - card.balance
-      card.destroy!
-    # else card.balance > 1000
-    #   if remaining_stack.balance >= card.balance
-    #     stack_balance = remaining_stack.balance - card.balance
-    #     card.destroy
-    #   else
-    #     card_balance = card.balance - remaining_stack.balance
-    #     stack_balance = 0
-    #   end
-    #   card.balance = card_balance if card.present?
-    #   card.save!
+  def pay_each_card(cards)
+    cards.each do |card|
+      
     end
-
-    remaining_stack.balance = stack_balance
-    remaining_stack.save!
-    card.balance
   end
 
-  def pay_smallest_cards
+  def pay_smallest_cards(card_debts)
     balance_array = []
-    current_user.credit_card_debts.each do |debt|
+    card_debts.each do |debt|
       balance_array.push(debt)
     end
     balance_array.sort_by &:balance
-    balance_array.each do |card|
-      pay_each_card(card)
-    end
+    pay_each_card(balance_array)
   end
 
   def current_level
@@ -82,11 +61,7 @@ binding.pry
       level.level = 2
       level.save!
     elsif stack.balance >= 1000 && small_em.balance == 1000 && has_card_debt
-      # pay smallest credit
-      pay_smallest_cards
-      # subtract 1000 from smallest credit card debt/s
-      # stack.balance = stack.balance - 1000
-      # stack.save!
+      pay_smallest_cards(current_user.credit_card_debts)
       level.level = 3
       level.save!
     elsif stack.balance >= 1000 && small_em.balance == 1000 && !has_card_debt && has_consumer_debt

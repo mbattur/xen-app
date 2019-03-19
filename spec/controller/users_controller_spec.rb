@@ -27,13 +27,16 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe '#pay_smallest_cards' do
-    let(:user) { create(:credit_card_debt).user }
+    let(:user) { create(:stack_account).user }
+    let(:card_debts) { [create(:credit_card_debt), create(:credit_card_debt)] }
+    let(:expected) do
+      []
+    end
 
     it 'pays credit cards' do
       sign_in user
-      resp = subject.pay_smallest_cards
-      puts JSON.pretty_generate(resp)
-      expect(resp).not be_nil
+      resp = subject.pay_smallest_cards(card_debts)
+      expect(resp).to eq(expected)
     end
   end
 end
