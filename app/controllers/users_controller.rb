@@ -26,7 +26,12 @@ class UsersController < ApplicationController
 
   def pay_each_card(cards)
     cards.each do |card|
-      
+      if card.balance < 1000
+        stack = current_user.stack_account
+        stack.balance = stack.balance - card.balance
+        stack.save!
+        card.destroy!
+      end
     end
   end
 
