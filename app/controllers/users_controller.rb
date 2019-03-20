@@ -25,12 +25,17 @@ class UsersController < ApplicationController
   # end
 
   def pay_each_card(cards)
+    stack = current_user.stack_account
     cards.each do |card|
-      if card.balance < 1000
-        stack = current_user.stack_account
+      if card.balance <= stack.balance
         stack.balance = stack.balance - card.balance
         stack.save!
         card.destroy!
+      else card.balance >= stack.balance
+        card.balance = card.balance - stack.balance
+        card.save
+        stack.balance = 0
+        stack.save!
       end
     end
   end
@@ -40,7 +45,7 @@ class UsersController < ApplicationController
     card_debts.each do |debt|
       balance_array.push(debt)
     end
-    balance_array.sort_by &:balance
+    balance_array = balance_array.sort_by &:balance
     pay_each_card(balance_array)
   end
 
