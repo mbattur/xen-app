@@ -24,14 +24,14 @@ class UsersController < ApplicationController
   #   CreditCard.find(params[:id]).pay!
   # end
 
-  def pay_each_card(cards)
+  def pay_each_cards(cards)
     stack = current_user.stack_account
     cards.each do |card|
       if card.balance <= stack.balance
         stack.balance = stack.balance - card.balance
         stack.save!
         card.destroy!
-      else card.balance >= stack.balance
+      else card.balance > stack.balance
         card.balance = card.balance - stack.balance
         card.save
         stack.balance = 0
@@ -40,13 +40,38 @@ class UsersController < ApplicationController
     end
   end
 
-  def pay_smallest_cards(card_debts)
-    balance_array = []
-    card_debts.each do |debt|
-      balance_array.push(debt)
+  def pay_each_consumer_debts(consumer_debts)
+    stack = current_user.stack_account
+    consumer_debts.each do |debt|
+      if debt.balance <= stack.balance
+        stack.balance = stack.balance - debt.balance
+        stack.save!
+        debt.destroy!
+      else debt.balance > stack.balance
+        debt.balance = debt.balance - stack.balance
+        debt.save
+        stack.balance = 0
+        stack.save!
+      end
     end
-    balance_array = balance_array.sort_by &:balance
-    pay_each_card(balance_array)
+  end
+
+  def pay_smallest_cards(card_debts)
+    sorted_array = []
+    card_debts.each do |debt|
+      sorted_array.push(debt)
+    end
+    sorted_array = sorted_array.sort_by &:balance
+    pay_each_cards(sorted_array)
+  end
+
+  def pay_smallest_consumer_debts(consumer_debts)
+    sorted_array = []
+    consumer_debts.each do |debt|
+      sorted_array.push(debt)
+    end
+    sorted_array = sorted_array.sort_by &:balance
+    pay_each_consumer_debts(sorted_array)
   end
 
   def current_level
@@ -75,8 +100,7 @@ class UsersController < ApplicationController
       level.level = 3
       level.save!
     elsif stack.balance >= 1000 && small_em.balance == 1000 && !has_card_debt && has_consumer_debt
-      # pay smallest consumer debt
-      # subtract 1000 from smallest consumer debt/s
+      pay_smallest_consumer_debts(current_user.consumer_debts)
       stack.balance = stack.balance - 1000
       stack.save!
       level.level = 4
