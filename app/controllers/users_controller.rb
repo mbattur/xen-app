@@ -62,7 +62,7 @@ class UsersController < ApplicationController
     has_card_debt = current_user.credit_card_debts.present?
     has_consumer_debt = current_user.consumer_debts.present?
     small_em = current_user.small_emergency
-    big_em = current_user.big_emergency
+    big_em = current_user.big_emergency.balance
     stack = current_user.stack_account
     level = current_user.user_level
 
