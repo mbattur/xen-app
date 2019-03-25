@@ -15,21 +15,11 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe '#pay_each_card' do
+  describe '#pay_each_debts' do
     let(:user) { create(:stack_account).user }
-    let(:card) { create(:credit_card_debt) }
-    let(:expected) { 150 }
-
-    it 'zzz' do
-      sign_in user
-      expect(subject.pay_each_card(card)).to eq(expected)
-    end
-  end
-
-  describe '#pay_each_consumer_debts' do
-    let(:user) { create(:stack_account).user }
-    let(:card) do
+    let(:cards) do
       [
+        create(:credit_card_debt),
         create(:credit_card_debt)
       ]
     end
@@ -37,7 +27,7 @@ RSpec.describe UsersController, type: :controller do
 
     it 'zzz' do
       sign_in user
-      expect(subject.pay_each_consumer_debts(card)).to eq(expected)
+      expect(subject.pay_each_debt(cards)).to eq(expected)
     end
   end
 
@@ -52,7 +42,7 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe '#pay_smallest_cards' do
+  describe '#pay_smallest_debts' do
     let(:user) { create(:stack_account).user }
     let(:card_debts) { [create(:credit_card_debt), create(:credit_card_debt)] }
     let(:expected) do
@@ -61,7 +51,7 @@ RSpec.describe UsersController, type: :controller do
 
     it 'pays credit cards' do
       sign_in user
-      resp = subject.pay_smallest_cards(card_debts)
+      resp = subject.pay_smallest_debts(card_debts)
       expect(resp).to eq(expected)
     end
   end
