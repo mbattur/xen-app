@@ -31,20 +31,14 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe '#pay_each_card' do
-    let(:user) { create(:stack_account).user }
-    let(:card) { create(:credit_card_debt) }
-    let(:expected) { 150 }
-
-    it 'zzz' do
-      sign_in user
-      expect(subject.pay_each_card(card)).to eq(expected)
-    end
-  end
-
   describe '#pay_smallest_debts' do
     let(:user) { create(:stack_account).user }
-    let(:card_debts) { [create(:credit_card_debt), create(:credit_card_debt)] }
+    let(:card_debts) do
+      [
+        create(:credit_card_debt),
+        create(:credit_card_debt)
+      ]
+    end
     let(:expected) do
       []
     end

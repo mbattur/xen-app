@@ -31,7 +31,6 @@ class UsersController < ApplicationController
         stack.balance = stack.balance - card.balance
         stack.save!
         card.destroy!
-        binding.pry
       else card.balance > stack.balance
         card.balance = card.balance - stack.balance
         card.save
