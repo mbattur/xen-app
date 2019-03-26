@@ -19,7 +19,7 @@ RSpec.describe UsersController, type: :controller do
     let(:user) { create(:stack_account).user }
     let(:cards) do
       [
-        create(:credit_card_debt),
+        # create(:credit_card_debt),
         create(:credit_card_debt)
       ]
     end
@@ -33,15 +33,10 @@ RSpec.describe UsersController, type: :controller do
 
   describe '#pay_smallest_debts' do
     let(:user) { create(:stack_account).user }
-    let(:card_debts) do
-      [
-        create(:credit_card_debt),
-        create(:credit_card_debt)
-      ]
-    end
-    let(:expected) do
-      []
-    end
+    let(:card1) { create(:credit_card_debt) }
+    let(:card2) { create(:credit_card_debt) }
+    let(:card_debts) { [card1, card2] }
+    let(:expected) { nil }
 
     it 'pays credit cards' do
       sign_in user
