@@ -28,9 +28,9 @@ class UsersController < ApplicationController
     stack = current_user.stack_account
     cards.each do |card|
       if card.balance <= stack.balance
-        binding.pry
+        # binding.pry
         stack.balance = stack.balance - card.balance
-        binding.pry
+        # binding.pry
         stack.save!
         card.destroy!
       else card.balance > stack.balance
